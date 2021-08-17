@@ -8,9 +8,9 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("VB_PID_Simulator")>
-<Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("")>
+<Assembly: AssemblyTitle("Visual Basic PID Simulator")>
+<Assembly: AssemblyDescription("Dynamic PID Simulator")>
+<Assembly: AssemblyCompany("Shankar Ananth Asokan")>
 <Assembly: AssemblyProduct("VB_PID_Simulator")>
 <Assembly: AssemblyCopyright("Copyright ©  2021")>
 <Assembly: AssemblyTrademark("")>
