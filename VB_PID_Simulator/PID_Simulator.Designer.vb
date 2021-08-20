@@ -23,71 +23,86 @@ Partial Class PID_Simulator
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series4 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series5 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series6 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.StatusStrip = New System.Windows.Forms.StatusStrip()
-        Me.ToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusSimulation = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusDummy1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusSpeed = New System.Windows.Forms.ToolStripStatusLabel()
         Me.MenuStrip = New System.Windows.Forms.MenuStrip()
         Me.MenuToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.SimulationControlPanel = New System.Windows.Forms.Panel()
         Me.SimulationSpeedSet = New System.Windows.Forms.TrackBar()
         Me.SimulationStopPb = New System.Windows.Forms.Button()
         Me.SimulationStartPb = New System.Windows.Forms.Button()
         Me.SimulationTrend = New System.Windows.Forms.DataVisualization.Charting.Chart()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.ProcessModelGroupBox = New System.Windows.Forms.GroupBox()
         Me.ProcessSettingTimeTb = New System.Windows.Forms.TextBox()
         Me.ProcessGainTb = New System.Windows.Forms.TextBox()
         Me.ProcessOutputTb = New System.Windows.Forms.TextBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.ProcessModelSettlingTimeLabel = New System.Windows.Forms.Label()
+        Me.ProcessModelGainLabel = New System.Windows.Forms.Label()
+        Me.ProcessModelOutputLabel = New System.Windows.Forms.Label()
         Me.ProcessInputTb = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.ProcessModelInputLabel = New System.Windows.Forms.Label()
+        Me.TuningTabControl = New System.Windows.Forms.TabControl()
+        Me.TuningTabPage = New System.Windows.Forms.TabPage()
+        Me.TuningAdvancedTabPage = New System.Windows.Forms.TabPage()
         Me.SimulationTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.AlarmView = New System.Windows.Forms.RichTextBox()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.MessageView = New System.Windows.Forms.RichTextBox()
+        Me.ControllerGroupBox = New System.Windows.Forms.GroupBox()
         Me.ControllerModeCb = New System.Windows.Forms.ComboBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.Label8 = New System.Windows.Forms.Label()
+        Me.ControllerOpTb = New System.Windows.Forms.TextBox()
+        Me.ControllerSpTb = New System.Windows.Forms.TextBox()
+        Me.ControllerModeLabel = New System.Windows.Forms.Label()
+        Me.ControllerOpLabel = New System.Windows.Forms.Label()
+        Me.ControllerSpLabel = New System.Windows.Forms.Label()
+        Me.ControllerPvTb = New System.Windows.Forms.TextBox()
+        Me.ControllerPvLabel = New System.Windows.Forms.Label()
+        Me.MessageViewClearPb = New System.Windows.Forms.Button()
         Me.StatusStrip.SuspendLayout()
         Me.MenuStrip.SuspendLayout()
-        Me.Panel1.SuspendLayout()
+        Me.SimulationControlPanel.SuspendLayout()
         CType(Me.SimulationSpeedSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SimulationTrend, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox1.SuspendLayout()
-        Me.TabControl1.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
+        Me.ProcessModelGroupBox.SuspendLayout()
+        Me.TuningTabControl.SuspendLayout()
+        Me.ControllerGroupBox.SuspendLayout()
         Me.SuspendLayout()
         '
         'StatusStrip
         '
         Me.StatusStrip.ImageScalingSize = New System.Drawing.Size(24, 24)
-        Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel})
-        Me.StatusStrip.Location = New System.Drawing.Point(0, 1013)
+        Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusSimulation, Me.ToolStripStatusDummy1, Me.ToolStripStatusSpeed})
+        Me.StatusStrip.Location = New System.Drawing.Point(0, 1012)
         Me.StatusStrip.Name = "StatusStrip"
         Me.StatusStrip.Padding = New System.Windows.Forms.Padding(2, 0, 14, 0)
         Me.StatusStrip.Size = New System.Drawing.Size(1478, 32)
         Me.StatusStrip.TabIndex = 0
         Me.StatusStrip.Text = "StatusStrip1"
         '
-        'ToolStripStatusLabel
+        'ToolStripStatusSimulation
         '
-        Me.ToolStripStatusLabel.Name = "ToolStripStatusLabel"
-        Me.ToolStripStatusLabel.Size = New System.Drawing.Size(60, 25)
-        Me.ToolStripStatusLabel.Text = "Status"
+        Me.ToolStripStatusSimulation.Name = "ToolStripStatusSimulation"
+        Me.ToolStripStatusSimulation.Size = New System.Drawing.Size(60, 25)
+        Me.ToolStripStatusSimulation.Text = "Status"
+        '
+        'ToolStripStatusDummy1
+        '
+        Me.ToolStripStatusDummy1.Name = "ToolStripStatusDummy1"
+        Me.ToolStripStatusDummy1.Size = New System.Drawing.Size(122, 25)
+        Me.ToolStripStatusDummy1.Text = "                      "
+        '
+        'ToolStripStatusSpeed
+        '
+        Me.ToolStripStatusSpeed.Name = "ToolStripStatusSpeed"
+        Me.ToolStripStatusSpeed.Size = New System.Drawing.Size(270, 25)
+        Me.ToolStripStatusSpeed.Text = "Simulation Speed = 1x (1000ms)"
         '
         'MenuStrip
         '
@@ -96,7 +111,6 @@ Partial Class PID_Simulator
         Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuToolStripMenuItem})
         Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip.Name = "MenuStrip"
-        Me.MenuStrip.Padding = New System.Windows.Forms.Padding(6, 2, 0, 2)
         Me.MenuStrip.Size = New System.Drawing.Size(1478, 33)
         Me.MenuStrip.TabIndex = 1
         Me.MenuStrip.Text = "MenuStrip1"
@@ -120,23 +134,25 @@ Partial Class PID_Simulator
         Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(164, 34)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
-        'Panel1
+        'SimulationControlPanel
         '
-        Me.Panel1.Controls.Add(Me.SimulationSpeedSet)
-        Me.Panel1.Controls.Add(Me.SimulationStopPb)
-        Me.Panel1.Controls.Add(Me.SimulationStartPb)
-        Me.Panel1.Location = New System.Drawing.Point(15, 49)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(350, 149)
-        Me.Panel1.TabIndex = 2
+        Me.SimulationControlPanel.Controls.Add(Me.SimulationSpeedSet)
+        Me.SimulationControlPanel.Controls.Add(Me.SimulationStopPb)
+        Me.SimulationControlPanel.Controls.Add(Me.SimulationStartPb)
+        Me.SimulationControlPanel.Location = New System.Drawing.Point(15, 49)
+        Me.SimulationControlPanel.Name = "SimulationControlPanel"
+        Me.SimulationControlPanel.Size = New System.Drawing.Size(350, 149)
+        Me.SimulationControlPanel.TabIndex = 2
         '
         'SimulationSpeedSet
         '
         Me.SimulationSpeedSet.LargeChange = 1
         Me.SimulationSpeedSet.Location = New System.Drawing.Point(15, 69)
+        Me.SimulationSpeedSet.Minimum = 1
         Me.SimulationSpeedSet.Name = "SimulationSpeedSet"
         Me.SimulationSpeedSet.Size = New System.Drawing.Size(320, 69)
         Me.SimulationSpeedSet.TabIndex = 1
+        Me.SimulationSpeedSet.Value = 1
         '
         'SimulationStopPb
         '
@@ -162,53 +178,53 @@ Partial Class PID_Simulator
         '
         'SimulationTrend
         '
-        ChartArea2.Name = "ChartArea1"
-        Me.SimulationTrend.ChartAreas.Add(ChartArea2)
-        Legend2.Name = "Legend1"
-        Me.SimulationTrend.Legends.Add(Legend2)
-        Me.SimulationTrend.Location = New System.Drawing.Point(400, 229)
+        ChartArea1.Name = "ChartArea1"
+        Me.SimulationTrend.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Legend1"
+        Me.SimulationTrend.Legends.Add(Legend1)
+        Me.SimulationTrend.Location = New System.Drawing.Point(398, 231)
         Me.SimulationTrend.Name = "SimulationTrend"
-        Series4.BorderWidth = 2
-        Series4.ChartArea = "ChartArea1"
-        Series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine
-        Series4.Color = System.Drawing.Color.Blue
-        Series4.Legend = "Legend1"
-        Series4.Name = "PV"
-        Series5.BorderWidth = 2
-        Series5.ChartArea = "ChartArea1"
-        Series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine
-        Series5.Color = System.Drawing.Color.Green
-        Series5.Legend = "Legend1"
-        Series5.Name = "SP"
-        Series6.BorderWidth = 2
-        Series6.ChartArea = "ChartArea1"
-        Series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine
-        Series6.Color = System.Drawing.Color.Red
-        Series6.Legend = "Legend1"
-        Series6.Name = "OP"
-        Me.SimulationTrend.Series.Add(Series4)
-        Me.SimulationTrend.Series.Add(Series5)
-        Me.SimulationTrend.Series.Add(Series6)
+        Series1.BorderWidth = 2
+        Series1.ChartArea = "ChartArea1"
+        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine
+        Series1.Color = System.Drawing.Color.Blue
+        Series1.Legend = "Legend1"
+        Series1.Name = "PV"
+        Series2.BorderWidth = 2
+        Series2.ChartArea = "ChartArea1"
+        Series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine
+        Series2.Color = System.Drawing.Color.Green
+        Series2.Legend = "Legend1"
+        Series2.Name = "SP"
+        Series3.BorderWidth = 2
+        Series3.ChartArea = "ChartArea1"
+        Series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine
+        Series3.Color = System.Drawing.Color.Red
+        Series3.Legend = "Legend1"
+        Series3.Name = "OP"
+        Me.SimulationTrend.Series.Add(Series1)
+        Me.SimulationTrend.Series.Add(Series2)
+        Me.SimulationTrend.Series.Add(Series3)
         Me.SimulationTrend.Size = New System.Drawing.Size(1050, 500)
         Me.SimulationTrend.TabIndex = 4
         Me.SimulationTrend.Text = "TrendChart"
         '
-        'GroupBox1
+        'ProcessModelGroupBox
         '
-        Me.GroupBox1.Controls.Add(Me.ProcessSettingTimeTb)
-        Me.GroupBox1.Controls.Add(Me.ProcessGainTb)
-        Me.GroupBox1.Controls.Add(Me.ProcessOutputTb)
-        Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Controls.Add(Me.ProcessInputTb)
-        Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Location = New System.Drawing.Point(15, 229)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(350, 222)
-        Me.GroupBox1.TabIndex = 5
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Process Model - First Order"
+        Me.ProcessModelGroupBox.Controls.Add(Me.ProcessSettingTimeTb)
+        Me.ProcessModelGroupBox.Controls.Add(Me.ProcessGainTb)
+        Me.ProcessModelGroupBox.Controls.Add(Me.ProcessOutputTb)
+        Me.ProcessModelGroupBox.Controls.Add(Me.ProcessModelSettlingTimeLabel)
+        Me.ProcessModelGroupBox.Controls.Add(Me.ProcessModelGainLabel)
+        Me.ProcessModelGroupBox.Controls.Add(Me.ProcessModelOutputLabel)
+        Me.ProcessModelGroupBox.Controls.Add(Me.ProcessInputTb)
+        Me.ProcessModelGroupBox.Controls.Add(Me.ProcessModelInputLabel)
+        Me.ProcessModelGroupBox.Location = New System.Drawing.Point(15, 231)
+        Me.ProcessModelGroupBox.Name = "ProcessModelGroupBox"
+        Me.ProcessModelGroupBox.Size = New System.Drawing.Size(350, 222)
+        Me.ProcessModelGroupBox.TabIndex = 5
+        Me.ProcessModelGroupBox.TabStop = False
+        Me.ProcessModelGroupBox.Text = "Process Model - First Order"
         '
         'ProcessSettingTimeTb
         '
@@ -240,35 +256,35 @@ Partial Class PID_Simulator
         Me.ProcessOutputTb.TabIndex = 1
         Me.ProcessOutputTb.Text = "50.00"
         '
-        'Label4
+        'ProcessModelSettlingTimeLabel
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(10, 160)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(186, 25)
-        Me.Label4.TabIndex = 0
-        Me.Label4.Text = "Settling Time (secs)"
+        Me.ProcessModelSettlingTimeLabel.AutoSize = True
+        Me.ProcessModelSettlingTimeLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ProcessModelSettlingTimeLabel.Location = New System.Drawing.Point(10, 160)
+        Me.ProcessModelSettlingTimeLabel.Name = "ProcessModelSettlingTimeLabel"
+        Me.ProcessModelSettlingTimeLabel.Size = New System.Drawing.Size(186, 25)
+        Me.ProcessModelSettlingTimeLabel.TabIndex = 0
+        Me.ProcessModelSettlingTimeLabel.Text = "Settling Time (secs)"
         '
-        'Label3
+        'ProcessModelGainLabel
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(10, 120)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(129, 25)
-        Me.Label3.TabIndex = 0
-        Me.Label3.Text = "Process Gain"
+        Me.ProcessModelGainLabel.AutoSize = True
+        Me.ProcessModelGainLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ProcessModelGainLabel.Location = New System.Drawing.Point(10, 120)
+        Me.ProcessModelGainLabel.Name = "ProcessModelGainLabel"
+        Me.ProcessModelGainLabel.Size = New System.Drawing.Size(129, 25)
+        Me.ProcessModelGainLabel.TabIndex = 0
+        Me.ProcessModelGainLabel.Text = "Process Gain"
         '
-        'Label2
+        'ProcessModelOutputLabel
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(10, 80)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(147, 25)
-        Me.Label2.TabIndex = 0
-        Me.Label2.Text = "Process Output"
+        Me.ProcessModelOutputLabel.AutoSize = True
+        Me.ProcessModelOutputLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ProcessModelOutputLabel.Location = New System.Drawing.Point(10, 80)
+        Me.ProcessModelOutputLabel.Name = "ProcessModelOutputLabel"
+        Me.ProcessModelOutputLabel.Size = New System.Drawing.Size(147, 25)
+        Me.ProcessModelOutputLabel.TabIndex = 0
+        Me.ProcessModelOutputLabel.Text = "Process Output"
         '
         'ProcessInputTb
         '
@@ -281,227 +297,241 @@ Partial Class PID_Simulator
         Me.ProcessInputTb.TabIndex = 1
         Me.ProcessInputTb.Text = "50.00"
         '
-        'Label1
+        'ProcessModelInputLabel
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(10, 40)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(131, 25)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Process Input"
+        Me.ProcessModelInputLabel.AutoSize = True
+        Me.ProcessModelInputLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ProcessModelInputLabel.Location = New System.Drawing.Point(10, 40)
+        Me.ProcessModelInputLabel.Name = "ProcessModelInputLabel"
+        Me.ProcessModelInputLabel.Size = New System.Drawing.Size(131, 25)
+        Me.ProcessModelInputLabel.TabIndex = 0
+        Me.ProcessModelInputLabel.Text = "Process Input"
         '
-        'TabControl1
+        'TuningTabControl
         '
-        Me.TabControl1.Controls.Add(Me.TabPage1)
-        Me.TabControl1.Controls.Add(Me.TabPage2)
-        Me.TabControl1.ItemSize = New System.Drawing.Size(85, 25)
-        Me.TabControl1.Location = New System.Drawing.Point(15, 749)
-        Me.TabControl1.Name = "TabControl1"
-        Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1446, 249)
-        Me.TabControl1.TabIndex = 6
+        Me.TuningTabControl.Controls.Add(Me.TuningTabPage)
+        Me.TuningTabControl.Controls.Add(Me.TuningAdvancedTabPage)
+        Me.TuningTabControl.ItemSize = New System.Drawing.Size(85, 25)
+        Me.TuningTabControl.Location = New System.Drawing.Point(15, 750)
+        Me.TuningTabControl.Name = "TuningTabControl"
+        Me.TuningTabControl.SelectedIndex = 0
+        Me.TuningTabControl.Size = New System.Drawing.Size(1446, 249)
+        Me.TuningTabControl.TabIndex = 6
         '
-        'TabPage1
+        'TuningTabPage
         '
-        Me.TabPage1.Location = New System.Drawing.Point(4, 29)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
-        Me.TabPage1.Size = New System.Drawing.Size(1438, 216)
-        Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "Tuning"
-        Me.TabPage1.UseVisualStyleBackColor = True
+        Me.TuningTabPage.Location = New System.Drawing.Point(4, 29)
+        Me.TuningTabPage.Name = "TuningTabPage"
+        Me.TuningTabPage.Padding = New System.Windows.Forms.Padding(3)
+        Me.TuningTabPage.Size = New System.Drawing.Size(1438, 216)
+        Me.TuningTabPage.TabIndex = 0
+        Me.TuningTabPage.Text = "Tuning"
+        Me.TuningTabPage.UseVisualStyleBackColor = True
         '
-        'TabPage2
+        'TuningAdvancedTabPage
         '
-        Me.TabPage2.Location = New System.Drawing.Point(4, 29)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
-        Me.TabPage2.Size = New System.Drawing.Size(1438, 216)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "Advanced"
-        Me.TabPage2.UseVisualStyleBackColor = True
+        Me.TuningAdvancedTabPage.Location = New System.Drawing.Point(4, 29)
+        Me.TuningAdvancedTabPage.Name = "TuningAdvancedTabPage"
+        Me.TuningAdvancedTabPage.Padding = New System.Windows.Forms.Padding(3)
+        Me.TuningAdvancedTabPage.Size = New System.Drawing.Size(1438, 216)
+        Me.TuningAdvancedTabPage.TabIndex = 1
+        Me.TuningAdvancedTabPage.Text = "Advanced"
+        Me.TuningAdvancedTabPage.UseVisualStyleBackColor = True
         '
         'SimulationTimer
         '
         Me.SimulationTimer.Interval = 1000
         '
-        'AlarmView
+        'MessageView
         '
-        Me.AlarmView.Location = New System.Drawing.Point(400, 49)
-        Me.AlarmView.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.AlarmView.Name = "AlarmView"
-        Me.AlarmView.Size = New System.Drawing.Size(1048, 147)
-        Me.AlarmView.TabIndex = 7
-        Me.AlarmView.Text = ""
+        Me.MessageView.Location = New System.Drawing.Point(398, 49)
+        Me.MessageView.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.MessageView.Name = "MessageView"
+        Me.MessageView.Size = New System.Drawing.Size(868, 152)
+        Me.MessageView.TabIndex = 7
+        Me.MessageView.Text = ""
         '
-        'GroupBox2
+        'ControllerGroupBox
         '
-        Me.GroupBox2.Controls.Add(Me.ControllerModeCb)
-        Me.GroupBox2.Controls.Add(Me.TextBox2)
-        Me.GroupBox2.Controls.Add(Me.TextBox3)
-        Me.GroupBox2.Controls.Add(Me.Label5)
-        Me.GroupBox2.Controls.Add(Me.Label6)
-        Me.GroupBox2.Controls.Add(Me.Label7)
-        Me.GroupBox2.Controls.Add(Me.TextBox4)
-        Me.GroupBox2.Controls.Add(Me.Label8)
-        Me.GroupBox2.Location = New System.Drawing.Point(15, 462)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(350, 249)
-        Me.GroupBox2.TabIndex = 5
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Controller"
+        Me.ControllerGroupBox.Controls.Add(Me.ControllerModeCb)
+        Me.ControllerGroupBox.Controls.Add(Me.ControllerOpTb)
+        Me.ControllerGroupBox.Controls.Add(Me.ControllerSpTb)
+        Me.ControllerGroupBox.Controls.Add(Me.ControllerModeLabel)
+        Me.ControllerGroupBox.Controls.Add(Me.ControllerOpLabel)
+        Me.ControllerGroupBox.Controls.Add(Me.ControllerSpLabel)
+        Me.ControllerGroupBox.Controls.Add(Me.ControllerPvTb)
+        Me.ControllerGroupBox.Controls.Add(Me.ControllerPvLabel)
+        Me.ControllerGroupBox.Location = New System.Drawing.Point(15, 462)
+        Me.ControllerGroupBox.Name = "ControllerGroupBox"
+        Me.ControllerGroupBox.Size = New System.Drawing.Size(350, 268)
+        Me.ControllerGroupBox.TabIndex = 5
+        Me.ControllerGroupBox.TabStop = False
+        Me.ControllerGroupBox.Text = "Controller"
         '
         'ControllerModeCb
         '
         Me.ControllerModeCb.FormattingEnabled = True
         Me.ControllerModeCb.Items.AddRange(New Object() {"Man", "Auto"})
-        Me.ControllerModeCb.Location = New System.Drawing.Point(232, 163)
+        Me.ControllerModeCb.Location = New System.Drawing.Point(232, 160)
         Me.ControllerModeCb.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.ControllerModeCb.Name = "ControllerModeCb"
         Me.ControllerModeCb.Size = New System.Drawing.Size(100, 28)
         Me.ControllerModeCb.TabIndex = 2
         '
-        'TextBox2
+        'ControllerOpTb
         '
-        Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(232, 120)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(100, 30)
-        Me.TextBox2.TabIndex = 1
-        Me.TextBox2.Text = "50.00"
+        Me.ControllerOpTb.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ControllerOpTb.Location = New System.Drawing.Point(232, 120)
+        Me.ControllerOpTb.Name = "ControllerOpTb"
+        Me.ControllerOpTb.Size = New System.Drawing.Size(100, 30)
+        Me.ControllerOpTb.TabIndex = 1
+        Me.ControllerOpTb.Text = "50.00"
         '
-        'TextBox3
+        'ControllerSpTb
         '
-        Me.TextBox3.BackColor = System.Drawing.Color.White
-        Me.TextBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox3.ForeColor = System.Drawing.Color.Black
-        Me.TextBox3.Location = New System.Drawing.Point(232, 80)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.ReadOnly = True
-        Me.TextBox3.Size = New System.Drawing.Size(100, 30)
-        Me.TextBox3.TabIndex = 1
-        Me.TextBox3.Text = "50.00"
+        Me.ControllerSpTb.BackColor = System.Drawing.Color.White
+        Me.ControllerSpTb.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ControllerSpTb.ForeColor = System.Drawing.Color.Black
+        Me.ControllerSpTb.Location = New System.Drawing.Point(232, 80)
+        Me.ControllerSpTb.Name = "ControllerSpTb"
+        Me.ControllerSpTb.ReadOnly = True
+        Me.ControllerSpTb.Size = New System.Drawing.Size(100, 30)
+        Me.ControllerSpTb.TabIndex = 1
+        Me.ControllerSpTb.Text = "50.00"
         '
-        'Label5
+        'ControllerModeLabel
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(10, 160)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(62, 25)
-        Me.Label5.TabIndex = 0
-        Me.Label5.Text = "Mode"
+        Me.ControllerModeLabel.AutoSize = True
+        Me.ControllerModeLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ControllerModeLabel.Location = New System.Drawing.Point(10, 160)
+        Me.ControllerModeLabel.Name = "ControllerModeLabel"
+        Me.ControllerModeLabel.Size = New System.Drawing.Size(62, 25)
+        Me.ControllerModeLabel.TabIndex = 0
+        Me.ControllerModeLabel.Text = "Mode"
         '
-        'Label6
+        'ControllerOpLabel
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(10, 120)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(119, 25)
-        Me.Label6.TabIndex = 0
-        Me.Label6.Text = "Output (OP)"
+        Me.ControllerOpLabel.AutoSize = True
+        Me.ControllerOpLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ControllerOpLabel.Location = New System.Drawing.Point(10, 120)
+        Me.ControllerOpLabel.Name = "ControllerOpLabel"
+        Me.ControllerOpLabel.Size = New System.Drawing.Size(119, 25)
+        Me.ControllerOpLabel.TabIndex = 0
+        Me.ControllerOpLabel.Text = "Output (OP)"
         '
-        'Label7
+        'ControllerSpLabel
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(10, 80)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(130, 25)
-        Me.Label7.TabIndex = 0
-        Me.Label7.Text = "Setpoint (SP)"
+        Me.ControllerSpLabel.AutoSize = True
+        Me.ControllerSpLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ControllerSpLabel.Location = New System.Drawing.Point(10, 80)
+        Me.ControllerSpLabel.Name = "ControllerSpLabel"
+        Me.ControllerSpLabel.Size = New System.Drawing.Size(130, 25)
+        Me.ControllerSpLabel.TabIndex = 0
+        Me.ControllerSpLabel.Text = "Setpoint (SP)"
         '
-        'TextBox4
+        'ControllerPvTb
         '
-        Me.TextBox4.BackColor = System.Drawing.Color.White
-        Me.TextBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox4.ForeColor = System.Drawing.Color.Black
-        Me.TextBox4.Location = New System.Drawing.Point(232, 40)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.ReadOnly = True
-        Me.TextBox4.Size = New System.Drawing.Size(100, 30)
-        Me.TextBox4.TabIndex = 1
-        Me.TextBox4.Text = "50.00"
+        Me.ControllerPvTb.BackColor = System.Drawing.Color.White
+        Me.ControllerPvTb.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ControllerPvTb.ForeColor = System.Drawing.Color.Black
+        Me.ControllerPvTb.Location = New System.Drawing.Point(232, 40)
+        Me.ControllerPvTb.Name = "ControllerPvTb"
+        Me.ControllerPvTb.ReadOnly = True
+        Me.ControllerPvTb.Size = New System.Drawing.Size(100, 30)
+        Me.ControllerPvTb.TabIndex = 1
+        Me.ControllerPvTb.Text = "50.00"
         '
-        'Label8
+        'ControllerPvLabel
         '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(10, 40)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(185, 25)
-        Me.Label8.TabIndex = 0
-        Me.Label8.Text = "Process Value (PV)"
+        Me.ControllerPvLabel.AutoSize = True
+        Me.ControllerPvLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ControllerPvLabel.Location = New System.Drawing.Point(10, 40)
+        Me.ControllerPvLabel.Name = "ControllerPvLabel"
+        Me.ControllerPvLabel.Size = New System.Drawing.Size(185, 25)
+        Me.ControllerPvLabel.TabIndex = 0
+        Me.ControllerPvLabel.Text = "Process Value (PV)"
+        '
+        'MessageViewClearPb
+        '
+        Me.MessageViewClearPb.Location = New System.Drawing.Point(1290, 154)
+        Me.MessageViewClearPb.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.MessageViewClearPb.Name = "MessageViewClearPb"
+        Me.MessageViewClearPb.Size = New System.Drawing.Size(150, 38)
+        Me.MessageViewClearPb.TabIndex = 8
+        Me.MessageViewClearPb.Text = "Clear Messages"
+        Me.MessageViewClearPb.UseVisualStyleBackColor = True
         '
         'PID_Simulator
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1478, 1045)
-        Me.Controls.Add(Me.AlarmView)
-        Me.Controls.Add(Me.TabControl1)
-        Me.Controls.Add(Me.GroupBox2)
-        Me.Controls.Add(Me.GroupBox1)
+        Me.ClientSize = New System.Drawing.Size(1478, 1044)
+        Me.Controls.Add(Me.MessageViewClearPb)
+        Me.Controls.Add(Me.MessageView)
+        Me.Controls.Add(Me.TuningTabControl)
+        Me.Controls.Add(Me.ControllerGroupBox)
+        Me.Controls.Add(Me.ProcessModelGroupBox)
         Me.Controls.Add(Me.SimulationTrend)
-        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.SimulationControlPanel)
         Me.Controls.Add(Me.StatusStrip)
         Me.Controls.Add(Me.MenuStrip)
         Me.MainMenuStrip = Me.MenuStrip
         Me.Name = "PID_Simulator"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "PID Simulator - Visual Basic"
+        Me.Text = " PID Simulator"
         Me.StatusStrip.ResumeLayout(False)
         Me.StatusStrip.PerformLayout()
         Me.MenuStrip.ResumeLayout(False)
         Me.MenuStrip.PerformLayout()
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
+        Me.SimulationControlPanel.ResumeLayout(False)
+        Me.SimulationControlPanel.PerformLayout()
         CType(Me.SimulationSpeedSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SimulationTrend, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
-        Me.TabControl1.ResumeLayout(False)
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
+        Me.ProcessModelGroupBox.ResumeLayout(False)
+        Me.ProcessModelGroupBox.PerformLayout()
+        Me.TuningTabControl.ResumeLayout(False)
+        Me.ControllerGroupBox.ResumeLayout(False)
+        Me.ControllerGroupBox.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents StatusStrip As StatusStrip
-    Friend WithEvents ToolStripStatusLabel As ToolStripStatusLabel
+    Friend WithEvents ToolStripStatusSimulation As ToolStripStatusLabel
     Friend WithEvents MenuStrip As MenuStrip
     Friend WithEvents MenuToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents Panel1 As Panel
+    Friend WithEvents SimulationControlPanel As Panel
     Friend WithEvents SimulationStartPb As Button
     Friend WithEvents SimulationStopPb As Button
     Friend WithEvents SimulationSpeedSet As TrackBar
     Friend WithEvents SimulationTrend As DataVisualization.Charting.Chart
-    Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents TabControl1 As TabControl
-    Friend WithEvents TabPage1 As TabPage
-    Friend WithEvents TabPage2 As TabPage
+    Friend WithEvents ProcessModelGroupBox As GroupBox
+    Friend WithEvents TuningTabControl As TabControl
+    Friend WithEvents TuningTabPage As TabPage
+    Friend WithEvents TuningAdvancedTabPage As TabPage
     Friend WithEvents ProcessInputTb As TextBox
-    Friend WithEvents Label1 As Label
+    Friend WithEvents ProcessModelInputLabel As Label
     Friend WithEvents SimulationTimer As Timer
     Friend WithEvents ProcessOutputTb As TextBox
-    Friend WithEvents Label2 As Label
+    Friend WithEvents ProcessModelOutputLabel As Label
     Friend WithEvents ProcessGainTb As TextBox
-    Friend WithEvents Label3 As Label
+    Friend WithEvents ProcessModelGainLabel As Label
     Friend WithEvents ProcessSettingTimeTb As TextBox
-    Friend WithEvents Label4 As Label
-    Friend WithEvents AlarmView As RichTextBox
-    Friend WithEvents GroupBox2 As GroupBox
-    Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents TextBox3 As TextBox
-    Friend WithEvents Label5 As Label
-    Friend WithEvents Label6 As Label
-    Friend WithEvents Label7 As Label
-    Friend WithEvents TextBox4 As TextBox
-    Friend WithEvents Label8 As Label
+    Friend WithEvents ProcessModelSettlingTimeLabel As Label
+    Friend WithEvents MessageView As RichTextBox
+    Friend WithEvents ControllerGroupBox As GroupBox
+    Friend WithEvents ControllerOpTb As TextBox
+    Friend WithEvents ControllerSpTb As TextBox
+    Friend WithEvents ControllerModeLabel As Label
+    Friend WithEvents ControllerOpLabel As Label
+    Friend WithEvents ControllerSpLabel As Label
+    Friend WithEvents ControllerPvTb As TextBox
+    Friend WithEvents ControllerPvLabel As Label
     Friend WithEvents ControllerModeCb As ComboBox
+    Friend WithEvents MessageViewClearPb As Button
+    Friend WithEvents ToolStripStatusDummy1 As ToolStripStatusLabel
+    Friend WithEvents ToolStripStatusSpeed As ToolStripStatusLabel
 End Class
