@@ -33,11 +33,16 @@
             ProcessModelOutputPrevious = ProcessModelOutput
 
             'Initialize Controller Variables
-            ControllerModeCb.SelectedIndex = 1
+            ControllerModeCb.SelectedIndex = 0
             ControllerPV = Val(ControllerPvTb.Text)
             ControllerSP = Val(ControllerSpTb.Text)
             ControllerOP = Val(ControllerOpTb.Text)
             ControllerCOUT = ControllerOP
+
+            'Initialize PID Algorithm 1 Variables
+            PidAlg1Err = 0
+            PidAlg1PrevErr = 0
+            PidAlg1Prev2Err = 0
 
             'Initialize Trend
             TrendValueInitializeArray = 50
@@ -105,8 +110,10 @@
             ProcessModelGain = Val(ProcessGainTb.Text)
             ProcessModelSettlingTime = Val(ProcessSettingTimeTb.Text)
 
-            'Controller - Process Model Connect
-            ProcessModelInput = ControllerOP
+            'Controller Read Parameters from UI
+            ControllerPV = Val(ControllerPvTb.Text)
+            ControllerSP = Val(ControllerSpTb.Text)
+            ControllerOP = Val(ControllerOpTb.Text)
 
             ' Dynamic Process Model Equation
             ' ModelOut = exp(-TimeInterval / tau) * ModelOutPrev + (1 - exp(-TimeInterval / tau)) * ModelInput * ModelGain
@@ -125,12 +132,45 @@
                 MessageView.ScrollToCaret()
             End If
 
-            'ControllerEquation
-            ControllerDeltaMove = (ControllerPV - ControllerSP)
+            'Controller - Process Model Connect
+            ControllerPV = ProcessModelOutput
 
+            'ControllerEquation
+            ControllerDeltaMove = (ControllerSP - ControllerPV)
+            ControllerCOUT = ControllerCOUT + ControllerDeltaMove
+
+            If ControllerModeCb.SelectedIndex = 0 Then  'Auto
+                ControllerSpTb.Enabled = True
+                ControllerOP = PidAlgorithm1(ControllerPV, ControllerSP, ControllerOP, FirstOrderCtrlGain,
+                                             FirstOrderCtrlIntegral, FirstOrderCtrlDerivative, FirstOrderCtrlDirection, 100, 0)
+                ' action - replace 100 and 0 with OP Hi and Lo
+                ControllerOpTb.Enabled = False
+            ElseIf ControllerModeCb.SelectedIndex = 1 Then 'Manual
+                ControllerOP = Val(ControllerOpTb.Text)
+                ControllerOpTb.Enabled = True
+                If FirstOrderPidPvTrackingTb.Value = 3 Then
+                    ControllerSpTb.Enabled = False
+                    ControllerSpTb.Text = Math.Round(ControllerPV, 3)
+                End If
+            End If
+
+            'Pass Controller Output to destination. Validate against Output limits
+            If ControllerCOUT < 0 Then
+                ControllerOP = 0
+            ElseIf ControllerCOUT > 100 Then
+                ControllerOP = 100
+            Else
+                ControllerOP = ControllerCOUT
+            End If
 
             'Update UI - Process Model
             ProcessOutputTb.Text = Math.Round(ProcessModelOutput, 4)
+            ProcessInputTb.Text = Math.Round(ControllerOP, 4) 'Note: Process and Controller connection
+
+            'Update UI - Controller
+            ControllerPvTb.Text = Math.Round(ControllerPV, 4)
+            ControllerSpTb.Text = Math.Round(ControllerSP, 4)
+            ControllerOpTb.Text = Math.Round(ControllerOP, 4)
 
             'Update Trends
 
@@ -139,22 +179,23 @@
             If SimulationTrend.Series(0).Points.Count > TrendSpan Then
                 SimulationTrend.Series(0).Points.RemoveAt(0)
             End If
-            SimulationTrend.Series(0).Points.AddY(CDbl(ProcessModelOutput))
+            SimulationTrend.Series(0).Points.AddY(CDbl(ControllerPV))
 
             If SimulationTrend.Series(1).Points.Count > TrendSpan Then
                 SimulationTrend.Series(1).Points.RemoveAt(0)
             End If
-            SimulationTrend.Series(1).Points.AddY(CDbl(ProcessModelInput))
+            SimulationTrend.Series(1).Points.AddY(CDbl(ControllerSP))
 
-            'If SimulationTrend.Series(2).Points.Count > TrendSpan Then
-            '    SimulationTrend.Series(2).Points.RemoveAt(0)
-            'End If
-            'SimulationTrend.Series(2).Points.AddY(CDbl(FirstOrderPidOp))
+            If SimulationTrend.Series(2).Points.Count > TrendSpan Then
+                SimulationTrend.Series(2).Points.RemoveAt(0)
+            End If
+            SimulationTrend.Series(2).Points.AddY(CDbl(ControllerOP))
 
         Catch ex As Exception
 
             'Quit application on Error
             MessageBox.Show("Error in Integrator. Application will quit")
+            SimulationTimer.Stop()
             End
 
         End Try
