@@ -94,30 +94,44 @@
     End Sub
     'Executes when Start button clicked
     Private Sub SimulationStartPb_Click(sender As Object, e As EventArgs) Handles SimulationStartPb.Click
+        Try
 
-        'Start Simulation Timer
-        SimulationTimer.Start()
+            'Start Simulation Timer
+            SimulationTimer.Start()
 
-        'Update Status Label 
-        ToolStripStatusSimulation.Text = "Simulation Running"
+            'Update Status Label 
+            ToolStripStatusSimulation.Text = "Simulation Running"
 
-        'Update Listbox
-        MessageView.AppendText("Simulation Started" & vbNewLine)
-        MessageView.ScrollToCaret()
+            'Update Listbox
+            MessageView.AppendText("Simulation Started" & vbNewLine)
+            MessageView.ScrollToCaret()
+
+        Catch ex As Exception
+
+            MsgBox("Simulation Start Push Button Error")
+
+        End Try
 
     End Sub
     'Executes when Stop button clicked
     Private Sub SimulationStopPb_Click(sender As Object, e As EventArgs) Handles SimulationStopPb.Click
+        Try
 
-        'Start Simulation Timer
-        SimulationTimer.Stop()
+            'Start Simulation Timer
+            SimulationTimer.Stop()
 
-        'Update Status Label 
-        ToolStripStatusSimulation.Text = "Simulation Stopped"
+            'Update Status Label 
+            ToolStripStatusSimulation.Text = "Simulation Stopped"
 
-        'Update Listbox
-        MessageView.AppendText("Simulation Stopped" & vbNewLine)
-        MessageView.ScrollToCaret()
+            'Update Listbox
+            MessageView.AppendText("Simulation Stopped" & vbNewLine)
+            MessageView.ScrollToCaret()
+
+        Catch ex As Exception
+
+            MsgBox("Simulation Stop Push Button Error")
+
+        End Try
 
     End Sub
     'Executes during integrator(timer) active
@@ -176,7 +190,8 @@
                 ControllerOpTb.ReadOnly = True
                 ControllerOpTb.BackColor = Color.White
                 ControllerCOUT = PidAlgorithm1(ControllerPV, ControllerSP, ControllerCOUT, ControllerGain,
-                                             ControllerIntegral, ControllerDerivative, ControllerDirection, ControllerOpHi, ControllerOpLo)
+                                             ControllerIntegral, ControllerDerivative, ControllerDirection,
+                                             ControllerOpHi, ControllerOpLo)
             ElseIf ControllerModeCb.SelectedIndex = 1 Then 'Manual
                 ControllerCOUT = ControllerOP
                 ControllerOpTb.ReadOnly = False
@@ -189,10 +204,14 @@
             End If
 
             'Pass Controller Output to destination. Validate against Output limits
-            If ControllerCOUT < 0 Then
-                ControllerOP = 0
-            ElseIf ControllerCOUT > 100 Then
-                ControllerOP = 100
+            If ControllerCOUT < ControllerOpLo Then
+                ControllerOP = ControllerOpLo
+                MessageView.AppendText("Controller Output - Low Limited" & vbNewLine)
+                MessageView.ScrollToCaret()
+            ElseIf ControllerCOUT > ControllerOpHi Then
+                ControllerOP = ControllerOpHi
+                MessageView.AppendText("Controller Output - High Limited" & vbNewLine)
+                MessageView.ScrollToCaret()
             Else
                 ControllerOP = ControllerCOUT
             End If

@@ -23,11 +23,11 @@ Partial Class PID_Simulator
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series7 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series8 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series9 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea5 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend5 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series13 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series14 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series15 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.StatusStrip = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusSimulation = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusDummy1 = New System.Windows.Forms.ToolStripStatusLabel()
@@ -203,34 +203,34 @@ Partial Class PID_Simulator
         '
         'SimulationTrend
         '
-        ChartArea3.Name = "ChartArea1"
-        Me.SimulationTrend.ChartAreas.Add(ChartArea3)
-        Legend3.Name = "Legend1"
-        Me.SimulationTrend.Legends.Add(Legend3)
+        ChartArea5.Name = "ChartArea1"
+        Me.SimulationTrend.ChartAreas.Add(ChartArea5)
+        Legend5.Name = "Legend1"
+        Me.SimulationTrend.Legends.Add(Legend5)
         Me.SimulationTrend.Location = New System.Drawing.Point(265, 150)
         Me.SimulationTrend.Margin = New System.Windows.Forms.Padding(2)
         Me.SimulationTrend.Name = "SimulationTrend"
-        Series7.BorderWidth = 2
-        Series7.ChartArea = "ChartArea1"
-        Series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine
-        Series7.Color = System.Drawing.Color.Blue
-        Series7.Legend = "Legend1"
-        Series7.Name = "PV"
-        Series8.BorderWidth = 2
-        Series8.ChartArea = "ChartArea1"
-        Series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine
-        Series8.Color = System.Drawing.Color.Green
-        Series8.Legend = "Legend1"
-        Series8.Name = "SP"
-        Series9.BorderWidth = 2
-        Series9.ChartArea = "ChartArea1"
-        Series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine
-        Series9.Color = System.Drawing.Color.Red
-        Series9.Legend = "Legend1"
-        Series9.Name = "OP"
-        Me.SimulationTrend.Series.Add(Series7)
-        Me.SimulationTrend.Series.Add(Series8)
-        Me.SimulationTrend.Series.Add(Series9)
+        Series13.BorderWidth = 2
+        Series13.ChartArea = "ChartArea1"
+        Series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine
+        Series13.Color = System.Drawing.Color.Blue
+        Series13.Legend = "Legend1"
+        Series13.Name = "PV"
+        Series14.BorderWidth = 2
+        Series14.ChartArea = "ChartArea1"
+        Series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine
+        Series14.Color = System.Drawing.Color.Green
+        Series14.Legend = "Legend1"
+        Series14.Name = "SP"
+        Series15.BorderWidth = 2
+        Series15.ChartArea = "ChartArea1"
+        Series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine
+        Series15.Color = System.Drawing.Color.Red
+        Series15.Legend = "Legend1"
+        Series15.Name = "OP"
+        Me.SimulationTrend.Series.Add(Series13)
+        Me.SimulationTrend.Series.Add(Series14)
+        Me.SimulationTrend.Series.Add(Series15)
         Me.SimulationTrend.Size = New System.Drawing.Size(700, 325)
         Me.SimulationTrend.TabIndex = 4
         Me.SimulationTrend.Text = "TrendChart"
@@ -521,7 +521,7 @@ Partial Class PID_Simulator
         Me.ControllerOpHighTb.Name = "ControllerOpHighTb"
         Me.ControllerOpHighTb.Size = New System.Drawing.Size(50, 23)
         Me.ControllerOpHighTb.TabIndex = 1
-        Me.ControllerOpHighTb.Text = "10"
+        Me.ControllerOpHighTb.Text = "100"
         '
         'ControllerSpHighTb
         '
@@ -533,7 +533,7 @@ Partial Class PID_Simulator
         Me.ControllerSpHighTb.Name = "ControllerSpHighTb"
         Me.ControllerSpHighTb.Size = New System.Drawing.Size(50, 23)
         Me.ControllerSpHighTb.TabIndex = 1
-        Me.ControllerSpHighTb.Text = "10"
+        Me.ControllerSpHighTb.Text = "100"
         '
         'ControllerOpLowTb
         '
@@ -545,7 +545,7 @@ Partial Class PID_Simulator
         Me.ControllerOpLowTb.Name = "ControllerOpLowTb"
         Me.ControllerOpLowTb.Size = New System.Drawing.Size(50, 23)
         Me.ControllerOpLowTb.TabIndex = 1
-        Me.ControllerOpLowTb.Text = "1"
+        Me.ControllerOpLowTb.Text = "0"
         '
         'ControllerDerivativeTb
         '
@@ -569,7 +569,7 @@ Partial Class PID_Simulator
         Me.ControllerSpLowTb.Name = "ControllerSpLowTb"
         Me.ControllerSpLowTb.Size = New System.Drawing.Size(50, 23)
         Me.ControllerSpLowTb.TabIndex = 1
-        Me.ControllerSpLowTb.Text = "1"
+        Me.ControllerSpLowTb.Text = "0"
         '
         'ControllerIntegralTb
         '
