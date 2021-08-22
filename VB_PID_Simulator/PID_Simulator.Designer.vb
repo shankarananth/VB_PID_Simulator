@@ -23,11 +23,11 @@ Partial Class PID_Simulator
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series7 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series8 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series9 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.StatusStrip = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusSimulation = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusDummy1 = New System.Windows.Forms.ToolStripStatusLabel()
@@ -52,6 +52,24 @@ Partial Class PID_Simulator
         Me.ProcessModelInputLabel = New System.Windows.Forms.Label()
         Me.TuningTabControl = New System.Windows.Forms.TabControl()
         Me.TuningTabPage = New System.Windows.Forms.TabPage()
+        Me.ControllerPvTrackingTrkb = New System.Windows.Forms.TrackBar()
+        Me.ControllerDirectionTrkb = New System.Windows.Forms.TrackBar()
+        Me.ControllerDerivativeLabel = New System.Windows.Forms.Label()
+        Me.ControllerOpHighLabel = New System.Windows.Forms.Label()
+        Me.ControllerSpHighLabel = New System.Windows.Forms.Label()
+        Me.ControllerIntegralLabel = New System.Windows.Forms.Label()
+        Me.ControllerOpLowLabel = New System.Windows.Forms.Label()
+        Me.ControllerSpLowLabel = New System.Windows.Forms.Label()
+        Me.ControllerDirectionLabel = New System.Windows.Forms.Label()
+        Me.ControllerPVTrackingLabel = New System.Windows.Forms.Label()
+        Me.ControllerGainLabel = New System.Windows.Forms.Label()
+        Me.ControllerOpHighTb = New System.Windows.Forms.TextBox()
+        Me.ControllerSpHighTb = New System.Windows.Forms.TextBox()
+        Me.ControllerOpLowTb = New System.Windows.Forms.TextBox()
+        Me.ControllerDerivativeTb = New System.Windows.Forms.TextBox()
+        Me.ControllerSpLowTb = New System.Windows.Forms.TextBox()
+        Me.ControllerIntegralTb = New System.Windows.Forms.TextBox()
+        Me.ControllerGainTb = New System.Windows.Forms.TextBox()
         Me.TuningAdvancedTabPage = New System.Windows.Forms.TabPage()
         Me.SimulationTimer = New System.Windows.Forms.Timer(Me.components)
         Me.MessageView = New System.Windows.Forms.RichTextBox()
@@ -65,14 +83,6 @@ Partial Class PID_Simulator
         Me.ControllerPvTb = New System.Windows.Forms.TextBox()
         Me.ControllerPvLabel = New System.Windows.Forms.Label()
         Me.MessageViewClearPb = New System.Windows.Forms.Button()
-        Me.ControllerGainLabel = New System.Windows.Forms.Label()
-        Me.ControllerGainTb = New System.Windows.Forms.TextBox()
-        Me.ControllerIntegralTb = New System.Windows.Forms.TextBox()
-        Me.ControllerIntegralLabel = New System.Windows.Forms.Label()
-        Me.ControllerDerivativeTb = New System.Windows.Forms.TextBox()
-        Me.ControllerDerivativeLabel = New System.Windows.Forms.Label()
-        Me.ControllerPvTracking = New System.Windows.Forms.TrackBar()
-        Me.ControllerDirection = New System.Windows.Forms.TrackBar()
         Me.StatusStrip.SuspendLayout()
         Me.MenuStrip.SuspendLayout()
         Me.SimulationControlPanel.SuspendLayout()
@@ -81,9 +91,9 @@ Partial Class PID_Simulator
         Me.ProcessModelGroupBox.SuspendLayout()
         Me.TuningTabControl.SuspendLayout()
         Me.TuningTabPage.SuspendLayout()
+        CType(Me.ControllerPvTrackingTrkb, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ControllerDirectionTrkb, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ControllerGroupBox.SuspendLayout()
-        CType(Me.ControllerPvTracking, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ControllerDirection, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'StatusStrip
@@ -151,7 +161,7 @@ Partial Class PID_Simulator
         Me.SimulationControlPanel.Controls.Add(Me.SimulationStopPb)
         Me.SimulationControlPanel.Controls.Add(Me.SimulationStartPb)
         Me.SimulationControlPanel.Location = New System.Drawing.Point(10, 32)
-        Me.SimulationControlPanel.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.SimulationControlPanel.Margin = New System.Windows.Forms.Padding(2)
         Me.SimulationControlPanel.Name = "SimulationControlPanel"
         Me.SimulationControlPanel.Size = New System.Drawing.Size(233, 97)
         Me.SimulationControlPanel.TabIndex = 2
@@ -160,7 +170,7 @@ Partial Class PID_Simulator
         '
         Me.SimulationSpeedSet.LargeChange = 1
         Me.SimulationSpeedSet.Location = New System.Drawing.Point(10, 45)
-        Me.SimulationSpeedSet.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.SimulationSpeedSet.Margin = New System.Windows.Forms.Padding(2)
         Me.SimulationSpeedSet.Minimum = 1
         Me.SimulationSpeedSet.Name = "SimulationSpeedSet"
         Me.SimulationSpeedSet.Size = New System.Drawing.Size(213, 45)
@@ -171,7 +181,7 @@ Partial Class PID_Simulator
         '
         Me.SimulationStopPb.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SimulationStopPb.Location = New System.Drawing.Point(123, 10)
-        Me.SimulationStopPb.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.SimulationStopPb.Margin = New System.Windows.Forms.Padding(2)
         Me.SimulationStopPb.Name = "SimulationStopPb"
         Me.SimulationStopPb.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.SimulationStopPb.Size = New System.Drawing.Size(100, 32)
@@ -183,7 +193,7 @@ Partial Class PID_Simulator
         '
         Me.SimulationStartPb.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SimulationStartPb.Location = New System.Drawing.Point(10, 10)
-        Me.SimulationStartPb.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.SimulationStartPb.Margin = New System.Windows.Forms.Padding(2)
         Me.SimulationStartPb.Name = "SimulationStartPb"
         Me.SimulationStartPb.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.SimulationStartPb.Size = New System.Drawing.Size(100, 32)
@@ -193,34 +203,34 @@ Partial Class PID_Simulator
         '
         'SimulationTrend
         '
-        ChartArea1.Name = "ChartArea1"
-        Me.SimulationTrend.ChartAreas.Add(ChartArea1)
-        Legend1.Name = "Legend1"
-        Me.SimulationTrend.Legends.Add(Legend1)
+        ChartArea3.Name = "ChartArea1"
+        Me.SimulationTrend.ChartAreas.Add(ChartArea3)
+        Legend3.Name = "Legend1"
+        Me.SimulationTrend.Legends.Add(Legend3)
         Me.SimulationTrend.Location = New System.Drawing.Point(265, 150)
-        Me.SimulationTrend.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.SimulationTrend.Margin = New System.Windows.Forms.Padding(2)
         Me.SimulationTrend.Name = "SimulationTrend"
-        Series1.BorderWidth = 2
-        Series1.ChartArea = "ChartArea1"
-        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine
-        Series1.Color = System.Drawing.Color.Blue
-        Series1.Legend = "Legend1"
-        Series1.Name = "PV"
-        Series2.BorderWidth = 2
-        Series2.ChartArea = "ChartArea1"
-        Series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine
-        Series2.Color = System.Drawing.Color.Green
-        Series2.Legend = "Legend1"
-        Series2.Name = "SP"
-        Series3.BorderWidth = 2
-        Series3.ChartArea = "ChartArea1"
-        Series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine
-        Series3.Color = System.Drawing.Color.Red
-        Series3.Legend = "Legend1"
-        Series3.Name = "OP"
-        Me.SimulationTrend.Series.Add(Series1)
-        Me.SimulationTrend.Series.Add(Series2)
-        Me.SimulationTrend.Series.Add(Series3)
+        Series7.BorderWidth = 2
+        Series7.ChartArea = "ChartArea1"
+        Series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine
+        Series7.Color = System.Drawing.Color.Blue
+        Series7.Legend = "Legend1"
+        Series7.Name = "PV"
+        Series8.BorderWidth = 2
+        Series8.ChartArea = "ChartArea1"
+        Series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine
+        Series8.Color = System.Drawing.Color.Green
+        Series8.Legend = "Legend1"
+        Series8.Name = "SP"
+        Series9.BorderWidth = 2
+        Series9.ChartArea = "ChartArea1"
+        Series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine
+        Series9.Color = System.Drawing.Color.Red
+        Series9.Legend = "Legend1"
+        Series9.Name = "OP"
+        Me.SimulationTrend.Series.Add(Series7)
+        Me.SimulationTrend.Series.Add(Series8)
+        Me.SimulationTrend.Series.Add(Series9)
         Me.SimulationTrend.Size = New System.Drawing.Size(700, 325)
         Me.SimulationTrend.TabIndex = 4
         Me.SimulationTrend.Text = "TrendChart"
@@ -236,9 +246,9 @@ Partial Class PID_Simulator
         Me.ProcessModelGroupBox.Controls.Add(Me.ProcessInputTb)
         Me.ProcessModelGroupBox.Controls.Add(Me.ProcessModelInputLabel)
         Me.ProcessModelGroupBox.Location = New System.Drawing.Point(10, 150)
-        Me.ProcessModelGroupBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.ProcessModelGroupBox.Margin = New System.Windows.Forms.Padding(2)
         Me.ProcessModelGroupBox.Name = "ProcessModelGroupBox"
-        Me.ProcessModelGroupBox.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.ProcessModelGroupBox.Padding = New System.Windows.Forms.Padding(2)
         Me.ProcessModelGroupBox.Size = New System.Drawing.Size(233, 144)
         Me.ProcessModelGroupBox.TabIndex = 5
         Me.ProcessModelGroupBox.TabStop = False
@@ -246,9 +256,10 @@ Partial Class PID_Simulator
         '
         'ProcessSettingTimeTb
         '
+        Me.ProcessSettingTimeTb.BackColor = System.Drawing.Color.Gold
         Me.ProcessSettingTimeTb.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ProcessSettingTimeTb.Location = New System.Drawing.Point(155, 104)
-        Me.ProcessSettingTimeTb.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.ProcessSettingTimeTb.Margin = New System.Windows.Forms.Padding(2)
         Me.ProcessSettingTimeTb.Name = "ProcessSettingTimeTb"
         Me.ProcessSettingTimeTb.Size = New System.Drawing.Size(68, 23)
         Me.ProcessSettingTimeTb.TabIndex = 1
@@ -256,9 +267,10 @@ Partial Class PID_Simulator
         '
         'ProcessGainTb
         '
+        Me.ProcessGainTb.BackColor = System.Drawing.Color.Gold
         Me.ProcessGainTb.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ProcessGainTb.Location = New System.Drawing.Point(155, 78)
-        Me.ProcessGainTb.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.ProcessGainTb.Margin = New System.Windows.Forms.Padding(2)
         Me.ProcessGainTb.Name = "ProcessGainTb"
         Me.ProcessGainTb.Size = New System.Drawing.Size(68, 23)
         Me.ProcessGainTb.TabIndex = 1
@@ -270,7 +282,7 @@ Partial Class PID_Simulator
         Me.ProcessOutputTb.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ProcessOutputTb.ForeColor = System.Drawing.Color.Black
         Me.ProcessOutputTb.Location = New System.Drawing.Point(155, 52)
-        Me.ProcessOutputTb.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.ProcessOutputTb.Margin = New System.Windows.Forms.Padding(2)
         Me.ProcessOutputTb.Name = "ProcessOutputTb"
         Me.ProcessOutputTb.ReadOnly = True
         Me.ProcessOutputTb.Size = New System.Drawing.Size(68, 23)
@@ -316,7 +328,7 @@ Partial Class PID_Simulator
         Me.ProcessInputTb.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ProcessInputTb.ForeColor = System.Drawing.Color.Black
         Me.ProcessInputTb.Location = New System.Drawing.Point(155, 26)
-        Me.ProcessInputTb.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.ProcessInputTb.Margin = New System.Windows.Forms.Padding(2)
         Me.ProcessInputTb.Name = "ProcessInputTb"
         Me.ProcessInputTb.ReadOnly = True
         Me.ProcessInputTb.Size = New System.Drawing.Size(68, 23)
@@ -340,7 +352,7 @@ Partial Class PID_Simulator
         Me.TuningTabControl.Controls.Add(Me.TuningAdvancedTabPage)
         Me.TuningTabControl.ItemSize = New System.Drawing.Size(85, 25)
         Me.TuningTabControl.Location = New System.Drawing.Point(10, 487)
-        Me.TuningTabControl.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TuningTabControl.Margin = New System.Windows.Forms.Padding(2)
         Me.TuningTabControl.Name = "TuningTabControl"
         Me.TuningTabControl.SelectedIndex = 0
         Me.TuningTabControl.Size = New System.Drawing.Size(964, 162)
@@ -348,29 +360,247 @@ Partial Class PID_Simulator
         '
         'TuningTabPage
         '
-        Me.TuningTabPage.Controls.Add(Me.ControllerPvTracking)
-        Me.TuningTabPage.Controls.Add(Me.ControllerDirection)
+        Me.TuningTabPage.Controls.Add(Me.ControllerPvTrackingTrkb)
+        Me.TuningTabPage.Controls.Add(Me.ControllerDirectionTrkb)
         Me.TuningTabPage.Controls.Add(Me.ControllerDerivativeLabel)
+        Me.TuningTabPage.Controls.Add(Me.ControllerOpHighLabel)
+        Me.TuningTabPage.Controls.Add(Me.ControllerSpHighLabel)
         Me.TuningTabPage.Controls.Add(Me.ControllerIntegralLabel)
+        Me.TuningTabPage.Controls.Add(Me.ControllerOpLowLabel)
+        Me.TuningTabPage.Controls.Add(Me.ControllerSpLowLabel)
+        Me.TuningTabPage.Controls.Add(Me.ControllerDirectionLabel)
+        Me.TuningTabPage.Controls.Add(Me.ControllerPVTrackingLabel)
         Me.TuningTabPage.Controls.Add(Me.ControllerGainLabel)
+        Me.TuningTabPage.Controls.Add(Me.ControllerOpHighTb)
+        Me.TuningTabPage.Controls.Add(Me.ControllerSpHighTb)
+        Me.TuningTabPage.Controls.Add(Me.ControllerOpLowTb)
         Me.TuningTabPage.Controls.Add(Me.ControllerDerivativeTb)
+        Me.TuningTabPage.Controls.Add(Me.ControllerSpLowTb)
         Me.TuningTabPage.Controls.Add(Me.ControllerIntegralTb)
         Me.TuningTabPage.Controls.Add(Me.ControllerGainTb)
         Me.TuningTabPage.Location = New System.Drawing.Point(4, 29)
-        Me.TuningTabPage.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TuningTabPage.Margin = New System.Windows.Forms.Padding(2)
         Me.TuningTabPage.Name = "TuningTabPage"
-        Me.TuningTabPage.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TuningTabPage.Padding = New System.Windows.Forms.Padding(2)
         Me.TuningTabPage.Size = New System.Drawing.Size(956, 129)
         Me.TuningTabPage.TabIndex = 0
         Me.TuningTabPage.Text = "Tuning"
         Me.TuningTabPage.UseVisualStyleBackColor = True
         '
+        'ControllerPvTrackingTrkb
+        '
+        Me.ControllerPvTrackingTrkb.LargeChange = 1
+        Me.ControllerPvTrackingTrkb.Location = New System.Drawing.Point(333, 71)
+        Me.ControllerPvTrackingTrkb.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.ControllerPvTrackingTrkb.Maximum = 2
+        Me.ControllerPvTrackingTrkb.Minimum = 1
+        Me.ControllerPvTrackingTrkb.Name = "ControllerPvTrackingTrkb"
+        Me.ControllerPvTrackingTrkb.Size = New System.Drawing.Size(57, 45)
+        Me.ControllerPvTrackingTrkb.TabIndex = 6
+        Me.ControllerPvTrackingTrkb.Value = 2
+        '
+        'ControllerDirectionTrkb
+        '
+        Me.ControllerDirectionTrkb.LargeChange = 2
+        Me.ControllerDirectionTrkb.Location = New System.Drawing.Point(333, 13)
+        Me.ControllerDirectionTrkb.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.ControllerDirectionTrkb.Maximum = 1
+        Me.ControllerDirectionTrkb.Minimum = -1
+        Me.ControllerDirectionTrkb.Name = "ControllerDirectionTrkb"
+        Me.ControllerDirectionTrkb.Size = New System.Drawing.Size(57, 45)
+        Me.ControllerDirectionTrkb.SmallChange = 2
+        Me.ControllerDirectionTrkb.TabIndex = 7
+        Me.ControllerDirectionTrkb.Value = 1
+        '
+        'ControllerDerivativeLabel
+        '
+        Me.ControllerDerivativeLabel.AutoSize = True
+        Me.ControllerDerivativeLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ControllerDerivativeLabel.Location = New System.Drawing.Point(7, 96)
+        Me.ControllerDerivativeLabel.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.ControllerDerivativeLabel.Name = "ControllerDerivativeLabel"
+        Me.ControllerDerivativeLabel.Size = New System.Drawing.Size(106, 17)
+        Me.ControllerDerivativeLabel.TabIndex = 0
+        Me.ControllerDerivativeLabel.Text = "Derivative Time"
+        '
+        'ControllerOpHighLabel
+        '
+        Me.ControllerOpHighLabel.AutoSize = True
+        Me.ControllerOpHighLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ControllerOpHighLabel.Location = New System.Drawing.Point(413, 106)
+        Me.ControllerOpHighLabel.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.ControllerOpHighLabel.Name = "ControllerOpHighLabel"
+        Me.ControllerOpHighLabel.Size = New System.Drawing.Size(61, 17)
+        Me.ControllerOpHighLabel.TabIndex = 0
+        Me.ControllerOpHighLabel.Text = "OP High"
+        '
+        'ControllerSpHighLabel
+        '
+        Me.ControllerSpHighLabel.AutoSize = True
+        Me.ControllerSpHighLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ControllerSpHighLabel.Location = New System.Drawing.Point(413, 41)
+        Me.ControllerSpHighLabel.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.ControllerSpHighLabel.Name = "ControllerSpHighLabel"
+        Me.ControllerSpHighLabel.Size = New System.Drawing.Size(59, 17)
+        Me.ControllerSpHighLabel.TabIndex = 0
+        Me.ControllerSpHighLabel.Text = "SP High"
+        '
+        'ControllerIntegralLabel
+        '
+        Me.ControllerIntegralLabel.AutoSize = True
+        Me.ControllerIntegralLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ControllerIntegralLabel.Location = New System.Drawing.Point(7, 56)
+        Me.ControllerIntegralLabel.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.ControllerIntegralLabel.Name = "ControllerIntegralLabel"
+        Me.ControllerIntegralLabel.Size = New System.Drawing.Size(90, 17)
+        Me.ControllerIntegralLabel.TabIndex = 0
+        Me.ControllerIntegralLabel.Text = "Integral Time"
+        '
+        'ControllerOpLowLabel
+        '
+        Me.ControllerOpLowLabel.AutoSize = True
+        Me.ControllerOpLowLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ControllerOpLowLabel.Location = New System.Drawing.Point(413, 73)
+        Me.ControllerOpLowLabel.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.ControllerOpLowLabel.Name = "ControllerOpLowLabel"
+        Me.ControllerOpLowLabel.Size = New System.Drawing.Size(57, 17)
+        Me.ControllerOpLowLabel.TabIndex = 0
+        Me.ControllerOpLowLabel.Text = "OP Low"
+        '
+        'ControllerSpLowLabel
+        '
+        Me.ControllerSpLowLabel.AutoSize = True
+        Me.ControllerSpLowLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ControllerSpLowLabel.Location = New System.Drawing.Point(413, 8)
+        Me.ControllerSpLowLabel.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.ControllerSpLowLabel.Name = "ControllerSpLowLabel"
+        Me.ControllerSpLowLabel.Size = New System.Drawing.Size(55, 17)
+        Me.ControllerSpLowLabel.TabIndex = 0
+        Me.ControllerSpLowLabel.Text = "SP Low"
+        '
+        'ControllerDirectionLabel
+        '
+        Me.ControllerDirectionLabel.AutoSize = True
+        Me.ControllerDirectionLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ControllerDirectionLabel.Location = New System.Drawing.Point(209, 13)
+        Me.ControllerDirectionLabel.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.ControllerDirectionLabel.Name = "ControllerDirectionLabel"
+        Me.ControllerDirectionLabel.Size = New System.Drawing.Size(129, 17)
+        Me.ControllerDirectionLabel.TabIndex = 0
+        Me.ControllerDirectionLabel.Text = "Controller Direction"
+        '
+        'ControllerPVTrackingLabel
+        '
+        Me.ControllerPVTrackingLabel.AutoSize = True
+        Me.ControllerPVTrackingLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ControllerPVTrackingLabel.Location = New System.Drawing.Point(209, 71)
+        Me.ControllerPVTrackingLabel.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.ControllerPVTrackingLabel.Name = "ControllerPVTrackingLabel"
+        Me.ControllerPVTrackingLabel.Size = New System.Drawing.Size(85, 17)
+        Me.ControllerPVTrackingLabel.TabIndex = 0
+        Me.ControllerPVTrackingLabel.Text = "PV Tracking"
+        '
+        'ControllerGainLabel
+        '
+        Me.ControllerGainLabel.AutoSize = True
+        Me.ControllerGainLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ControllerGainLabel.Location = New System.Drawing.Point(7, 16)
+        Me.ControllerGainLabel.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.ControllerGainLabel.Name = "ControllerGainLabel"
+        Me.ControllerGainLabel.Size = New System.Drawing.Size(119, 17)
+        Me.ControllerGainLabel.TabIndex = 0
+        Me.ControllerGainLabel.Text = "Proportional Gain"
+        '
+        'ControllerOpHighTb
+        '
+        Me.ControllerOpHighTb.BackColor = System.Drawing.Color.White
+        Me.ControllerOpHighTb.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ControllerOpHighTb.ForeColor = System.Drawing.Color.Black
+        Me.ControllerOpHighTb.Location = New System.Drawing.Point(490, 102)
+        Me.ControllerOpHighTb.Margin = New System.Windows.Forms.Padding(2)
+        Me.ControllerOpHighTb.Name = "ControllerOpHighTb"
+        Me.ControllerOpHighTb.Size = New System.Drawing.Size(50, 23)
+        Me.ControllerOpHighTb.TabIndex = 1
+        Me.ControllerOpHighTb.Text = "10"
+        '
+        'ControllerSpHighTb
+        '
+        Me.ControllerSpHighTb.BackColor = System.Drawing.Color.White
+        Me.ControllerSpHighTb.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ControllerSpHighTb.ForeColor = System.Drawing.Color.Black
+        Me.ControllerSpHighTb.Location = New System.Drawing.Point(490, 37)
+        Me.ControllerSpHighTb.Margin = New System.Windows.Forms.Padding(2)
+        Me.ControllerSpHighTb.Name = "ControllerSpHighTb"
+        Me.ControllerSpHighTb.Size = New System.Drawing.Size(50, 23)
+        Me.ControllerSpHighTb.TabIndex = 1
+        Me.ControllerSpHighTb.Text = "10"
+        '
+        'ControllerOpLowTb
+        '
+        Me.ControllerOpLowTb.BackColor = System.Drawing.Color.White
+        Me.ControllerOpLowTb.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ControllerOpLowTb.ForeColor = System.Drawing.Color.Black
+        Me.ControllerOpLowTb.Location = New System.Drawing.Point(490, 70)
+        Me.ControllerOpLowTb.Margin = New System.Windows.Forms.Padding(2)
+        Me.ControllerOpLowTb.Name = "ControllerOpLowTb"
+        Me.ControllerOpLowTb.Size = New System.Drawing.Size(50, 23)
+        Me.ControllerOpLowTb.TabIndex = 1
+        Me.ControllerOpLowTb.Text = "1"
+        '
+        'ControllerDerivativeTb
+        '
+        Me.ControllerDerivativeTb.BackColor = System.Drawing.Color.White
+        Me.ControllerDerivativeTb.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ControllerDerivativeTb.ForeColor = System.Drawing.Color.Black
+        Me.ControllerDerivativeTb.Location = New System.Drawing.Point(140, 93)
+        Me.ControllerDerivativeTb.Margin = New System.Windows.Forms.Padding(2)
+        Me.ControllerDerivativeTb.Name = "ControllerDerivativeTb"
+        Me.ControllerDerivativeTb.Size = New System.Drawing.Size(50, 23)
+        Me.ControllerDerivativeTb.TabIndex = 1
+        Me.ControllerDerivativeTb.Text = "0"
+        '
+        'ControllerSpLowTb
+        '
+        Me.ControllerSpLowTb.BackColor = System.Drawing.Color.White
+        Me.ControllerSpLowTb.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ControllerSpLowTb.ForeColor = System.Drawing.Color.Black
+        Me.ControllerSpLowTb.Location = New System.Drawing.Point(490, 5)
+        Me.ControllerSpLowTb.Margin = New System.Windows.Forms.Padding(2)
+        Me.ControllerSpLowTb.Name = "ControllerSpLowTb"
+        Me.ControllerSpLowTb.Size = New System.Drawing.Size(50, 23)
+        Me.ControllerSpLowTb.TabIndex = 1
+        Me.ControllerSpLowTb.Text = "1"
+        '
+        'ControllerIntegralTb
+        '
+        Me.ControllerIntegralTb.BackColor = System.Drawing.Color.White
+        Me.ControllerIntegralTb.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ControllerIntegralTb.ForeColor = System.Drawing.Color.Black
+        Me.ControllerIntegralTb.Location = New System.Drawing.Point(140, 53)
+        Me.ControllerIntegralTb.Margin = New System.Windows.Forms.Padding(2)
+        Me.ControllerIntegralTb.Name = "ControllerIntegralTb"
+        Me.ControllerIntegralTb.Size = New System.Drawing.Size(50, 23)
+        Me.ControllerIntegralTb.TabIndex = 1
+        Me.ControllerIntegralTb.Text = "10"
+        '
+        'ControllerGainTb
+        '
+        Me.ControllerGainTb.BackColor = System.Drawing.Color.White
+        Me.ControllerGainTb.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ControllerGainTb.ForeColor = System.Drawing.Color.Black
+        Me.ControllerGainTb.Location = New System.Drawing.Point(140, 13)
+        Me.ControllerGainTb.Margin = New System.Windows.Forms.Padding(2)
+        Me.ControllerGainTb.Name = "ControllerGainTb"
+        Me.ControllerGainTb.Size = New System.Drawing.Size(50, 23)
+        Me.ControllerGainTb.TabIndex = 1
+        Me.ControllerGainTb.Text = "0.3"
+        '
         'TuningAdvancedTabPage
         '
         Me.TuningAdvancedTabPage.Location = New System.Drawing.Point(4, 29)
-        Me.TuningAdvancedTabPage.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TuningAdvancedTabPage.Margin = New System.Windows.Forms.Padding(2)
         Me.TuningAdvancedTabPage.Name = "TuningAdvancedTabPage"
-        Me.TuningAdvancedTabPage.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TuningAdvancedTabPage.Padding = New System.Windows.Forms.Padding(2)
         Me.TuningAdvancedTabPage.Size = New System.Drawing.Size(956, 129)
         Me.TuningAdvancedTabPage.TabIndex = 1
         Me.TuningAdvancedTabPage.Text = "Advanced"
@@ -399,9 +629,9 @@ Partial Class PID_Simulator
         Me.ControllerGroupBox.Controls.Add(Me.ControllerPvTb)
         Me.ControllerGroupBox.Controls.Add(Me.ControllerPvLabel)
         Me.ControllerGroupBox.Location = New System.Drawing.Point(10, 300)
-        Me.ControllerGroupBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.ControllerGroupBox.Margin = New System.Windows.Forms.Padding(2)
         Me.ControllerGroupBox.Name = "ControllerGroupBox"
-        Me.ControllerGroupBox.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.ControllerGroupBox.Padding = New System.Windows.Forms.Padding(2)
         Me.ControllerGroupBox.Size = New System.Drawing.Size(233, 174)
         Me.ControllerGroupBox.TabIndex = 5
         Me.ControllerGroupBox.TabStop = False
@@ -418,11 +648,12 @@ Partial Class PID_Simulator
         '
         'ControllerOpTb
         '
-        Me.ControllerOpTb.BackColor = System.Drawing.Color.Gold
+        Me.ControllerOpTb.BackColor = System.Drawing.Color.White
         Me.ControllerOpTb.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ControllerOpTb.Location = New System.Drawing.Point(155, 78)
-        Me.ControllerOpTb.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.ControllerOpTb.Margin = New System.Windows.Forms.Padding(2)
         Me.ControllerOpTb.Name = "ControllerOpTb"
+        Me.ControllerOpTb.ReadOnly = True
         Me.ControllerOpTb.Size = New System.Drawing.Size(68, 23)
         Me.ControllerOpTb.TabIndex = 1
         Me.ControllerOpTb.Text = "50.00"
@@ -433,7 +664,7 @@ Partial Class PID_Simulator
         Me.ControllerSpTb.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ControllerSpTb.ForeColor = System.Drawing.Color.Black
         Me.ControllerSpTb.Location = New System.Drawing.Point(155, 52)
-        Me.ControllerSpTb.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.ControllerSpTb.Margin = New System.Windows.Forms.Padding(2)
         Me.ControllerSpTb.Name = "ControllerSpTb"
         Me.ControllerSpTb.Size = New System.Drawing.Size(68, 23)
         Me.ControllerSpTb.TabIndex = 1
@@ -478,7 +709,7 @@ Partial Class PID_Simulator
         Me.ControllerPvTb.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ControllerPvTb.ForeColor = System.Drawing.Color.Black
         Me.ControllerPvTb.Location = New System.Drawing.Point(155, 26)
-        Me.ControllerPvTb.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.ControllerPvTb.Margin = New System.Windows.Forms.Padding(2)
         Me.ControllerPvTb.Name = "ControllerPvTb"
         Me.ControllerPvTb.ReadOnly = True
         Me.ControllerPvTb.Size = New System.Drawing.Size(68, 23)
@@ -505,103 +736,6 @@ Partial Class PID_Simulator
         Me.MessageViewClearPb.Text = "Clear Messages"
         Me.MessageViewClearPb.UseVisualStyleBackColor = True
         '
-        'ControllerGainLabel
-        '
-        Me.ControllerGainLabel.AutoSize = True
-        Me.ControllerGainLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ControllerGainLabel.Location = New System.Drawing.Point(7, 16)
-        Me.ControllerGainLabel.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.ControllerGainLabel.Name = "ControllerGainLabel"
-        Me.ControllerGainLabel.Size = New System.Drawing.Size(119, 17)
-        Me.ControllerGainLabel.TabIndex = 0
-        Me.ControllerGainLabel.Text = "Proportional Gain"
-        '
-        'ControllerGainTb
-        '
-        Me.ControllerGainTb.BackColor = System.Drawing.Color.White
-        Me.ControllerGainTb.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ControllerGainTb.ForeColor = System.Drawing.Color.Black
-        Me.ControllerGainTb.Location = New System.Drawing.Point(151, 13)
-        Me.ControllerGainTb.Margin = New System.Windows.Forms.Padding(2)
-        Me.ControllerGainTb.Name = "ControllerGainTb"
-        Me.ControllerGainTb.ReadOnly = True
-        Me.ControllerGainTb.Size = New System.Drawing.Size(50, 23)
-        Me.ControllerGainTb.TabIndex = 1
-        Me.ControllerGainTb.Text = "1"
-        '
-        'ControllerIntegralTb
-        '
-        Me.ControllerIntegralTb.BackColor = System.Drawing.Color.White
-        Me.ControllerIntegralTb.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ControllerIntegralTb.ForeColor = System.Drawing.Color.Black
-        Me.ControllerIntegralTb.Location = New System.Drawing.Point(151, 53)
-        Me.ControllerIntegralTb.Margin = New System.Windows.Forms.Padding(2)
-        Me.ControllerIntegralTb.Name = "ControllerIntegralTb"
-        Me.ControllerIntegralTb.ReadOnly = True
-        Me.ControllerIntegralTb.Size = New System.Drawing.Size(50, 23)
-        Me.ControllerIntegralTb.TabIndex = 1
-        Me.ControllerIntegralTb.Text = "10"
-        '
-        'ControllerIntegralLabel
-        '
-        Me.ControllerIntegralLabel.AutoSize = True
-        Me.ControllerIntegralLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ControllerIntegralLabel.Location = New System.Drawing.Point(7, 56)
-        Me.ControllerIntegralLabel.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.ControllerIntegralLabel.Name = "ControllerIntegralLabel"
-        Me.ControllerIntegralLabel.Size = New System.Drawing.Size(90, 17)
-        Me.ControllerIntegralLabel.TabIndex = 0
-        Me.ControllerIntegralLabel.Text = "Integral Time"
-        '
-        'ControllerDerivativeTb
-        '
-        Me.ControllerDerivativeTb.BackColor = System.Drawing.Color.White
-        Me.ControllerDerivativeTb.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ControllerDerivativeTb.ForeColor = System.Drawing.Color.Black
-        Me.ControllerDerivativeTb.Location = New System.Drawing.Point(151, 93)
-        Me.ControllerDerivativeTb.Margin = New System.Windows.Forms.Padding(2)
-        Me.ControllerDerivativeTb.Name = "ControllerDerivativeTb"
-        Me.ControllerDerivativeTb.ReadOnly = True
-        Me.ControllerDerivativeTb.Size = New System.Drawing.Size(50, 23)
-        Me.ControllerDerivativeTb.TabIndex = 1
-        Me.ControllerDerivativeTb.Text = "0"
-        '
-        'ControllerDerivativeLabel
-        '
-        Me.ControllerDerivativeLabel.AutoSize = True
-        Me.ControllerDerivativeLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ControllerDerivativeLabel.Location = New System.Drawing.Point(7, 96)
-        Me.ControllerDerivativeLabel.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.ControllerDerivativeLabel.Name = "ControllerDerivativeLabel"
-        Me.ControllerDerivativeLabel.Size = New System.Drawing.Size(106, 17)
-        Me.ControllerDerivativeLabel.TabIndex = 0
-        Me.ControllerDerivativeLabel.Text = "Derivative Time"
-        '
-        'ControllerPvTracking
-        '
-        Me.ControllerPvTracking.LargeChange = 1
-        Me.ControllerPvTracking.Location = New System.Drawing.Point(251, 70)
-        Me.ControllerPvTracking.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.ControllerPvTracking.Maximum = 2
-        Me.ControllerPvTracking.Minimum = 1
-        Me.ControllerPvTracking.Name = "ControllerPvTracking"
-        Me.ControllerPvTracking.Size = New System.Drawing.Size(57, 45)
-        Me.ControllerPvTracking.TabIndex = 6
-        Me.ControllerPvTracking.Value = 1
-        '
-        'ControllerDirection
-        '
-        Me.ControllerDirection.LargeChange = 2
-        Me.ControllerDirection.Location = New System.Drawing.Point(251, 13)
-        Me.ControllerDirection.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.ControllerDirection.Maximum = 1
-        Me.ControllerDirection.Minimum = -1
-        Me.ControllerDirection.Name = "ControllerDirection"
-        Me.ControllerDirection.Size = New System.Drawing.Size(57, 45)
-        Me.ControllerDirection.SmallChange = 2
-        Me.ControllerDirection.TabIndex = 7
-        Me.ControllerDirection.Value = 1
-        '
         'PID_Simulator
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -617,7 +751,7 @@ Partial Class PID_Simulator
         Me.Controls.Add(Me.StatusStrip)
         Me.Controls.Add(Me.MenuStrip)
         Me.MainMenuStrip = Me.MenuStrip
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "PID_Simulator"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = " PID Simulator"
@@ -634,10 +768,10 @@ Partial Class PID_Simulator
         Me.TuningTabControl.ResumeLayout(False)
         Me.TuningTabPage.ResumeLayout(False)
         Me.TuningTabPage.PerformLayout()
+        CType(Me.ControllerPvTrackingTrkb, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ControllerDirectionTrkb, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ControllerGroupBox.ResumeLayout(False)
         Me.ControllerGroupBox.PerformLayout()
-        CType(Me.ControllerPvTracking, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ControllerDirection, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -686,6 +820,16 @@ Partial Class PID_Simulator
     Friend WithEvents ControllerIntegralLabel As Label
     Friend WithEvents ControllerDerivativeTb As TextBox
     Friend WithEvents ControllerIntegralTb As TextBox
-    Friend WithEvents ControllerPvTracking As TrackBar
-    Friend WithEvents ControllerDirection As TrackBar
+    Friend WithEvents ControllerPvTrackingTrkb As TrackBar
+    Friend WithEvents ControllerDirectionTrkb As TrackBar
+    Friend WithEvents ControllerSpHighLabel As Label
+    Friend WithEvents ControllerSpLowLabel As Label
+    Friend WithEvents ControllerSpHighTb As TextBox
+    Friend WithEvents ControllerSpLowTb As TextBox
+    Friend WithEvents ControllerOpHighLabel As Label
+    Friend WithEvents ControllerOpLowLabel As Label
+    Friend WithEvents ControllerOpHighTb As TextBox
+    Friend WithEvents ControllerOpLowTb As TextBox
+    Friend WithEvents ControllerDirectionLabel As Label
+    Friend WithEvents ControllerPVTrackingLabel As Label
 End Class

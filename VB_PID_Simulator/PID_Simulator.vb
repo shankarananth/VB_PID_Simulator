@@ -14,6 +14,17 @@
     Public ControllerCOUT As Double
     Public ControllerDeltaMove As Double
 
+    'Defining Controller Tuning Parameter Variables
+    Public ControllerGain As Double
+    Public ControllerIntegral As Double
+    Public ControllerDerivative As Double
+    Public ControllerSpLo As Double
+    Public ControllerSpHi As Double
+    Public ControllerOpLo As Double
+    Public ControllerOpHi As Double
+    Public ControllerDirection As Integer
+    Public ControllerPvTracking As Integer
+
     'Defining other variables
     Public SimulationtimerInterval As Double
     Public TrendValueInitializeArray As Double
@@ -38,6 +49,17 @@
             ControllerSP = Val(ControllerSpTb.Text)
             ControllerOP = Val(ControllerOpTb.Text)
             ControllerCOUT = ControllerOP
+
+            'Initialize Controller Tuning Parameter Variables
+            ControllerGain = Val(ControllerGainTb.Text)
+            ControllerIntegral = Val(ControllerIntegralTb.Text)
+            ControllerDerivative = Val(ControllerDerivativeTb.Text)
+            ControllerSpLo = Val(ControllerSpLowTb.Text)
+            ControllerSpHi = Val(ControllerSpHighTb.Text)
+            ControllerOpLo = Val(ControllerOpLowTb.Text)
+            ControllerOpHi = Val(ControllerOpHighTb.Text)
+            ControllerDirection = ControllerDirectionTrkb.Value
+            ControllerPvTracking = ControllerPvTrackingTrkb.Value
 
             'Initialize PID Algorithm 1 Variables
             PidAlg1Err = 0
@@ -115,6 +137,17 @@
             ControllerSP = Val(ControllerSpTb.Text)
             ControllerOP = Val(ControllerOpTb.Text)
 
+            'Controller Tuning Read Parameters from UI
+            ControllerGain = Val(ControllerGainTb.Text)
+            ControllerIntegral = Val(ControllerIntegralTb.Text)
+            ControllerDerivative = Val(ControllerDerivativeTb.Text)
+            ControllerSpLo = Val(ControllerSpLowTb.Text)
+            ControllerSpHi = Val(ControllerSpHighTb.Text)
+            ControllerOpLo = Val(ControllerOpLowTb.Text)
+            ControllerOpHi = Val(ControllerOpHighTb.Text)
+            ControllerDirection = ControllerDirectionTrkb.Value
+            ControllerPvTracking = ControllerPvTrackingTrkb.Value
+
             ' Dynamic Process Model Equation
             ' ModelOut = exp(-TimeInterval / tau) * ModelOutPrev + (1 - exp(-TimeInterval / tau)) * ModelInput * ModelGain
             ProcessModelOutput = (Math.Exp(-SimulationtimerInterval / ProcessModelSettlingTime) * ProcessModelOutputPrevious) +
@@ -136,21 +169,22 @@
             ControllerPV = ProcessModelOutput
 
             'ControllerEquation
-            ControllerDeltaMove = (ControllerSP - ControllerPV)
-            ControllerCOUT = ControllerCOUT + ControllerDeltaMove
 
             If ControllerModeCb.SelectedIndex = 0 Then  'Auto
-                ControllerSpTb.Enabled = True
-                ControllerOP = PidAlgorithm1(ControllerPV, ControllerSP, ControllerOP, FirstOrderCtrlGain,
-                                             FirstOrderCtrlIntegral, FirstOrderCtrlDerivative, FirstOrderCtrlDirection, 100, 0)
-                ' action - replace 100 and 0 with OP Hi and Lo
-                ControllerOpTb.Enabled = False
+                ControllerSpTb.ReadOnly = False
+                ControllerSpTb.BackColor = Color.Gold
+                ControllerOpTb.ReadOnly = True
+                ControllerOpTb.BackColor = Color.White
+                ControllerCOUT = PidAlgorithm1(ControllerPV, ControllerSP, ControllerCOUT, ControllerGain,
+                                             ControllerIntegral, ControllerDerivative, ControllerDirection, ControllerOpHi, ControllerOpLo)
             ElseIf ControllerModeCb.SelectedIndex = 1 Then 'Manual
-                ControllerOP = Val(ControllerOpTb.Text)
-                ControllerOpTb.Enabled = True
-                If FirstOrderPidPvTrackingTb.Value = 3 Then
-                    ControllerSpTb.Enabled = False
-                    ControllerSpTb.Text = Math.Round(ControllerPV, 3)
+                ControllerCOUT = ControllerOP
+                ControllerOpTb.ReadOnly = False
+                ControllerOpTb.BackColor = Color.Gold
+                If ControllerPvTrackingTrkb.Value = 2 Then
+                    ControllerSpTb.ReadOnly = True
+                    ControllerSpTb.BackColor = Color.White
+                    ControllerSP = Math.Round(ControllerPV, 3)
                 End If
             End If
 
@@ -215,7 +249,5 @@
         MessageView.Clear()
     End Sub
 
-    Private Sub SimulationTrend_Click(sender As Object, e As EventArgs) Handles SimulationTrend.Click
 
-    End Sub
 End Class
