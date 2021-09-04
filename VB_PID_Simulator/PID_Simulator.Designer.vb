@@ -84,6 +84,15 @@ Partial Class PID_Simulator
         Me.ControllerPvTb = New System.Windows.Forms.TextBox()
         Me.ControllerPvLabel = New System.Windows.Forms.Label()
         Me.MessageViewClearPb = New System.Windows.Forms.Button()
+        Me.NoiseFactorLabel = New System.Windows.Forms.Label()
+        Me.SimulationSpeedLabel = New System.Windows.Forms.Label()
+        Me.NoiseFactorTb = New System.Windows.Forms.TextBox()
+        Me.ProcessModelDisturbanceLabl = New System.Windows.Forms.Label()
+        Me.ProcessModelDisturbanceTb = New System.Windows.Forms.TextBox()
+        Me.ControllerPVLabelHMI = New System.Windows.Forms.Label()
+        Me.ControllerSPLabelHMI = New System.Windows.Forms.Label()
+        Me.ControllerOPLabelHMI = New System.Windows.Forms.Label()
+        Me.ControllerCOLabelHMI = New System.Windows.Forms.Label()
         Me.StatusStrip.SuspendLayout()
         Me.MenuStrip.SuspendLayout()
         Me.SimulationControlPanel.SuspendLayout()
@@ -133,7 +142,7 @@ Partial Class PID_Simulator
         Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuToolStripMenuItem})
         Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip.Name = "MenuStrip"
-        Me.MenuStrip.Size = New System.Drawing.Size(1478, 33)
+        Me.MenuStrip.Size = New System.Drawing.Size(1478, 36)
         Me.MenuStrip.TabIndex = 1
         Me.MenuStrip.Text = "MenuStrip1"
         '
@@ -141,23 +150,24 @@ Partial Class PID_Simulator
         '
         Me.MenuToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem, Me.ExitToolStripMenuItem})
         Me.MenuToolStripMenuItem.Name = "MenuToolStripMenuItem"
-        Me.MenuToolStripMenuItem.Size = New System.Drawing.Size(73, 29)
+        Me.MenuToolStripMenuItem.Size = New System.Drawing.Size(73, 32)
         Me.MenuToolStripMenuItem.Text = "Menu"
         '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(270, 34)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(164, 34)
         Me.AboutToolStripMenuItem.Text = "About"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(270, 34)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(164, 34)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'SimulationControlPanel
         '
+        Me.SimulationControlPanel.Controls.Add(Me.SimulationSpeedLabel)
         Me.SimulationControlPanel.Controls.Add(Me.SimulationSpeedSet)
         Me.SimulationControlPanel.Controls.Add(Me.SimulationStopPb)
         Me.SimulationControlPanel.Controls.Add(Me.SimulationStartPb)
@@ -173,7 +183,8 @@ Partial Class PID_Simulator
         Me.SimulationSpeedSet.Minimum = 1
         Me.SimulationSpeedSet.Name = "SimulationSpeedSet"
         Me.SimulationSpeedSet.Size = New System.Drawing.Size(320, 69)
-        Me.SimulationSpeedSet.TabIndex = 1
+        Me.SimulationSpeedSet.TabIndex = 3
+        Me.SimulationSpeedSet.TickStyle = System.Windows.Forms.TickStyle.TopLeft
         Me.SimulationSpeedSet.Value = 1
         '
         'SimulationStopPb
@@ -183,7 +194,7 @@ Partial Class PID_Simulator
         Me.SimulationStopPb.Name = "SimulationStopPb"
         Me.SimulationStopPb.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.SimulationStopPb.Size = New System.Drawing.Size(150, 49)
-        Me.SimulationStopPb.TabIndex = 0
+        Me.SimulationStopPb.TabIndex = 2
         Me.SimulationStopPb.Text = "Stop"
         Me.SimulationStopPb.UseVisualStyleBackColor = True
         '
@@ -194,7 +205,7 @@ Partial Class PID_Simulator
         Me.SimulationStartPb.Name = "SimulationStartPb"
         Me.SimulationStartPb.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.SimulationStartPb.Size = New System.Drawing.Size(150, 49)
-        Me.SimulationStartPb.TabIndex = 0
+        Me.SimulationStartPb.TabIndex = 1
         Me.SimulationStartPb.Text = "Start"
         Me.SimulationStartPb.UseVisualStyleBackColor = True
         '
@@ -236,14 +247,18 @@ Partial Class PID_Simulator
         Me.ProcessModelGroupBox.Controls.Add(Me.ProcessSettingTimeTb)
         Me.ProcessModelGroupBox.Controls.Add(Me.ProcessGainTb)
         Me.ProcessModelGroupBox.Controls.Add(Me.ProcessOutputTb)
+        Me.ProcessModelGroupBox.Controls.Add(Me.ProcessModelDisturbanceLabl)
+        Me.ProcessModelGroupBox.Controls.Add(Me.NoiseFactorLabel)
         Me.ProcessModelGroupBox.Controls.Add(Me.ProcessModelSettlingTimeLabel)
         Me.ProcessModelGroupBox.Controls.Add(Me.ProcessModelGainLabel)
         Me.ProcessModelGroupBox.Controls.Add(Me.ProcessModelOutputLabel)
+        Me.ProcessModelGroupBox.Controls.Add(Me.ProcessModelDisturbanceTb)
+        Me.ProcessModelGroupBox.Controls.Add(Me.NoiseFactorTb)
         Me.ProcessModelGroupBox.Controls.Add(Me.ProcessInputTb)
         Me.ProcessModelGroupBox.Controls.Add(Me.ProcessModelInputLabel)
         Me.ProcessModelGroupBox.Location = New System.Drawing.Point(15, 231)
         Me.ProcessModelGroupBox.Name = "ProcessModelGroupBox"
-        Me.ProcessModelGroupBox.Size = New System.Drawing.Size(350, 222)
+        Me.ProcessModelGroupBox.Size = New System.Drawing.Size(350, 290)
         Me.ProcessModelGroupBox.TabIndex = 5
         Me.ProcessModelGroupBox.TabStop = False
         Me.ProcessModelGroupBox.Text = "Process Model - First Order"
@@ -255,7 +270,7 @@ Partial Class PID_Simulator
         Me.ProcessSettingTimeTb.Location = New System.Drawing.Point(232, 160)
         Me.ProcessSettingTimeTb.Name = "ProcessSettingTimeTb"
         Me.ProcessSettingTimeTb.Size = New System.Drawing.Size(100, 30)
-        Me.ProcessSettingTimeTb.TabIndex = 1
+        Me.ProcessSettingTimeTb.TabIndex = 7
         Me.ProcessSettingTimeTb.Text = "10"
         '
         'ProcessGainTb
@@ -265,7 +280,7 @@ Partial Class PID_Simulator
         Me.ProcessGainTb.Location = New System.Drawing.Point(232, 120)
         Me.ProcessGainTb.Name = "ProcessGainTb"
         Me.ProcessGainTb.Size = New System.Drawing.Size(100, 30)
-        Me.ProcessGainTb.TabIndex = 1
+        Me.ProcessGainTb.TabIndex = 6
         Me.ProcessGainTb.Text = "1.00"
         '
         'ProcessOutputTb
@@ -277,7 +292,7 @@ Partial Class PID_Simulator
         Me.ProcessOutputTb.Name = "ProcessOutputTb"
         Me.ProcessOutputTb.ReadOnly = True
         Me.ProcessOutputTb.Size = New System.Drawing.Size(100, 30)
-        Me.ProcessOutputTb.TabIndex = 1
+        Me.ProcessOutputTb.TabIndex = 5
         Me.ProcessOutputTb.Text = "50.00"
         '
         'ProcessModelSettlingTimeLabel
@@ -319,7 +334,7 @@ Partial Class PID_Simulator
         Me.ProcessInputTb.Name = "ProcessInputTb"
         Me.ProcessInputTb.ReadOnly = True
         Me.ProcessInputTb.Size = New System.Drawing.Size(100, 30)
-        Me.ProcessInputTb.TabIndex = 1
+        Me.ProcessInputTb.TabIndex = 4
         Me.ProcessInputTb.Text = "50.00"
         '
         'ProcessModelInputLabel
@@ -380,7 +395,7 @@ Partial Class PID_Simulator
         Me.ControllerPvTrackingTrkb.Minimum = 1
         Me.ControllerPvTrackingTrkb.Name = "ControllerPvTrackingTrkb"
         Me.ControllerPvTrackingTrkb.Size = New System.Drawing.Size(86, 69)
-        Me.ControllerPvTrackingTrkb.TabIndex = 6
+        Me.ControllerPvTrackingTrkb.TabIndex = 35
         Me.ControllerPvTrackingTrkb.Value = 2
         '
         'ControllerDirectionTrkb
@@ -393,7 +408,7 @@ Partial Class PID_Simulator
         Me.ControllerDirectionTrkb.Name = "ControllerDirectionTrkb"
         Me.ControllerDirectionTrkb.Size = New System.Drawing.Size(86, 69)
         Me.ControllerDirectionTrkb.SmallChange = 2
-        Me.ControllerDirectionTrkb.TabIndex = 7
+        Me.ControllerDirectionTrkb.TabIndex = 34
         Me.ControllerDirectionTrkb.Value = 1
         '
         'ControllerDerivativeLabel
@@ -402,9 +417,9 @@ Partial Class PID_Simulator
         Me.ControllerDerivativeLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ControllerDerivativeLabel.Location = New System.Drawing.Point(10, 148)
         Me.ControllerDerivativeLabel.Name = "ControllerDerivativeLabel"
-        Me.ControllerDerivativeLabel.Size = New System.Drawing.Size(147, 25)
+        Me.ControllerDerivativeLabel.Size = New System.Drawing.Size(158, 25)
         Me.ControllerDerivativeLabel.TabIndex = 0
-        Me.ControllerDerivativeLabel.Text = "Derivative Time"
+        Me.ControllerDerivativeLabel.Text = "Derivative (secs)"
         '
         'ControllerOpHighLabel
         '
@@ -432,9 +447,9 @@ Partial Class PID_Simulator
         Me.ControllerIntegralLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ControllerIntegralLabel.Location = New System.Drawing.Point(10, 86)
         Me.ControllerIntegralLabel.Name = "ControllerIntegralLabel"
-        Me.ControllerIntegralLabel.Size = New System.Drawing.Size(125, 25)
+        Me.ControllerIntegralLabel.Size = New System.Drawing.Size(185, 25)
         Me.ControllerIntegralLabel.TabIndex = 0
-        Me.ControllerIntegralLabel.Text = "Integral Time"
+        Me.ControllerIntegralLabel.Text = "Integral Time (secs)"
         '
         'ControllerOpLowLabel
         '
@@ -494,7 +509,7 @@ Partial Class PID_Simulator
         Me.ControllerOpHighTb.Location = New System.Drawing.Point(735, 157)
         Me.ControllerOpHighTb.Name = "ControllerOpHighTb"
         Me.ControllerOpHighTb.Size = New System.Drawing.Size(73, 30)
-        Me.ControllerOpHighTb.TabIndex = 1
+        Me.ControllerOpHighTb.TabIndex = 39
         Me.ControllerOpHighTb.Text = "100"
         '
         'ControllerSpHighTb
@@ -505,7 +520,7 @@ Partial Class PID_Simulator
         Me.ControllerSpHighTb.Location = New System.Drawing.Point(735, 57)
         Me.ControllerSpHighTb.Name = "ControllerSpHighTb"
         Me.ControllerSpHighTb.Size = New System.Drawing.Size(73, 30)
-        Me.ControllerSpHighTb.TabIndex = 1
+        Me.ControllerSpHighTb.TabIndex = 37
         Me.ControllerSpHighTb.Text = "100"
         '
         'ControllerOpLowTb
@@ -516,7 +531,7 @@ Partial Class PID_Simulator
         Me.ControllerOpLowTb.Location = New System.Drawing.Point(735, 108)
         Me.ControllerOpLowTb.Name = "ControllerOpLowTb"
         Me.ControllerOpLowTb.Size = New System.Drawing.Size(73, 30)
-        Me.ControllerOpLowTb.TabIndex = 1
+        Me.ControllerOpLowTb.TabIndex = 38
         Me.ControllerOpLowTb.Text = "0"
         '
         'ControllerDerivativeTb
@@ -527,7 +542,7 @@ Partial Class PID_Simulator
         Me.ControllerDerivativeTb.Location = New System.Drawing.Point(210, 143)
         Me.ControllerDerivativeTb.Name = "ControllerDerivativeTb"
         Me.ControllerDerivativeTb.Size = New System.Drawing.Size(73, 30)
-        Me.ControllerDerivativeTb.TabIndex = 1
+        Me.ControllerDerivativeTb.TabIndex = 33
         Me.ControllerDerivativeTb.Text = "0"
         '
         'ControllerSpLowTb
@@ -538,7 +553,7 @@ Partial Class PID_Simulator
         Me.ControllerSpLowTb.Location = New System.Drawing.Point(735, 8)
         Me.ControllerSpLowTb.Name = "ControllerSpLowTb"
         Me.ControllerSpLowTb.Size = New System.Drawing.Size(73, 30)
-        Me.ControllerSpLowTb.TabIndex = 1
+        Me.ControllerSpLowTb.TabIndex = 36
         Me.ControllerSpLowTb.Text = "0"
         '
         'ControllerIntegralTb
@@ -549,7 +564,7 @@ Partial Class PID_Simulator
         Me.ControllerIntegralTb.Location = New System.Drawing.Point(210, 82)
         Me.ControllerIntegralTb.Name = "ControllerIntegralTb"
         Me.ControllerIntegralTb.Size = New System.Drawing.Size(73, 30)
-        Me.ControllerIntegralTb.TabIndex = 1
+        Me.ControllerIntegralTb.TabIndex = 32
         Me.ControllerIntegralTb.Text = "10"
         '
         'ControllerGainTb
@@ -560,7 +575,7 @@ Partial Class PID_Simulator
         Me.ControllerGainTb.Location = New System.Drawing.Point(210, 20)
         Me.ControllerGainTb.Name = "ControllerGainTb"
         Me.ControllerGainTb.Size = New System.Drawing.Size(73, 30)
-        Me.ControllerGainTb.TabIndex = 1
+        Me.ControllerGainTb.TabIndex = 31
         Me.ControllerGainTb.Text = "0.3"
         '
         'TuningAdvancedTabPage
@@ -596,9 +611,9 @@ Partial Class PID_Simulator
         Me.ControllerGroupBox.Controls.Add(Me.ControllerSpLabel)
         Me.ControllerGroupBox.Controls.Add(Me.ControllerPvTb)
         Me.ControllerGroupBox.Controls.Add(Me.ControllerPvLabel)
-        Me.ControllerGroupBox.Location = New System.Drawing.Point(15, 462)
+        Me.ControllerGroupBox.Location = New System.Drawing.Point(15, 530)
         Me.ControllerGroupBox.Name = "ControllerGroupBox"
-        Me.ControllerGroupBox.Size = New System.Drawing.Size(350, 268)
+        Me.ControllerGroupBox.Size = New System.Drawing.Size(350, 200)
         Me.ControllerGroupBox.TabIndex = 5
         Me.ControllerGroupBox.TabStop = False
         Me.ControllerGroupBox.Text = "Controller"
@@ -611,7 +626,7 @@ Partial Class PID_Simulator
         Me.ControllerModeCb.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.ControllerModeCb.Name = "ControllerModeCb"
         Me.ControllerModeCb.Size = New System.Drawing.Size(100, 28)
-        Me.ControllerModeCb.TabIndex = 2
+        Me.ControllerModeCb.TabIndex = 18
         '
         'ControllerOpTb
         '
@@ -621,7 +636,7 @@ Partial Class PID_Simulator
         Me.ControllerOpTb.Name = "ControllerOpTb"
         Me.ControllerOpTb.ReadOnly = True
         Me.ControllerOpTb.Size = New System.Drawing.Size(100, 30)
-        Me.ControllerOpTb.TabIndex = 1
+        Me.ControllerOpTb.TabIndex = 17
         Me.ControllerOpTb.Text = "50.00"
         '
         'ControllerSpTb
@@ -632,7 +647,7 @@ Partial Class PID_Simulator
         Me.ControllerSpTb.Location = New System.Drawing.Point(232, 80)
         Me.ControllerSpTb.Name = "ControllerSpTb"
         Me.ControllerSpTb.Size = New System.Drawing.Size(100, 30)
-        Me.ControllerSpTb.TabIndex = 1
+        Me.ControllerSpTb.TabIndex = 16
         Me.ControllerSpTb.Text = "50.00"
         '
         'ControllerModeLabel
@@ -674,7 +689,7 @@ Partial Class PID_Simulator
         Me.ControllerPvTb.Name = "ControllerPvTb"
         Me.ControllerPvTb.ReadOnly = True
         Me.ControllerPvTb.Size = New System.Drawing.Size(100, 30)
-        Me.ControllerPvTb.TabIndex = 1
+        Me.ControllerPvTb.TabIndex = 15
         Me.ControllerPvTb.Text = "50.00"
         '
         'ControllerPvLabel
@@ -697,11 +712,111 @@ Partial Class PID_Simulator
         Me.MessageViewClearPb.Text = "Clear Messages"
         Me.MessageViewClearPb.UseVisualStyleBackColor = True
         '
+        'NoiseFactorLabel
+        '
+        Me.NoiseFactorLabel.AutoSize = True
+        Me.NoiseFactorLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.NoiseFactorLabel.Location = New System.Drawing.Point(10, 200)
+        Me.NoiseFactorLabel.Name = "NoiseFactorLabel"
+        Me.NoiseFactorLabel.Size = New System.Drawing.Size(122, 25)
+        Me.NoiseFactorLabel.TabIndex = 0
+        Me.NoiseFactorLabel.Text = "Noise Factor"
+        '
+        'SimulationSpeedLabel
+        '
+        Me.SimulationSpeedLabel.AutoSize = True
+        Me.SimulationSpeedLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SimulationSpeedLabel.Location = New System.Drawing.Point(10, 118)
+        Me.SimulationSpeedLabel.Name = "SimulationSpeedLabel"
+        Me.SimulationSpeedLabel.Size = New System.Drawing.Size(166, 25)
+        Me.SimulationSpeedLabel.TabIndex = 0
+        Me.SimulationSpeedLabel.Text = "Simulation Speed"
+        '
+        'NoiseFactorTb
+        '
+        Me.NoiseFactorTb.BackColor = System.Drawing.Color.White
+        Me.NoiseFactorTb.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.NoiseFactorTb.ForeColor = System.Drawing.Color.Black
+        Me.NoiseFactorTb.Location = New System.Drawing.Point(232, 200)
+        Me.NoiseFactorTb.Name = "NoiseFactorTb"
+        Me.NoiseFactorTb.Size = New System.Drawing.Size(100, 30)
+        Me.NoiseFactorTb.TabIndex = 8
+        Me.NoiseFactorTb.Text = "1"
+        '
+        'ProcessModelDisturbanceLabl
+        '
+        Me.ProcessModelDisturbanceLabl.AutoSize = True
+        Me.ProcessModelDisturbanceLabl.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ProcessModelDisturbanceLabl.Location = New System.Drawing.Point(10, 241)
+        Me.ProcessModelDisturbanceLabl.Name = "ProcessModelDisturbanceLabl"
+        Me.ProcessModelDisturbanceLabl.Size = New System.Drawing.Size(116, 25)
+        Me.ProcessModelDisturbanceLabl.TabIndex = 0
+        Me.ProcessModelDisturbanceLabl.Text = "Disturbance"
+        '
+        'ProcessModelDisturbanceTb
+        '
+        Me.ProcessModelDisturbanceTb.BackColor = System.Drawing.Color.White
+        Me.ProcessModelDisturbanceTb.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ProcessModelDisturbanceTb.ForeColor = System.Drawing.Color.Black
+        Me.ProcessModelDisturbanceTb.Location = New System.Drawing.Point(232, 241)
+        Me.ProcessModelDisturbanceTb.Name = "ProcessModelDisturbanceTb"
+        Me.ProcessModelDisturbanceTb.Size = New System.Drawing.Size(100, 30)
+        Me.ProcessModelDisturbanceTb.TabIndex = 9
+        Me.ProcessModelDisturbanceTb.Text = "0"
+        '
+        'ControllerPVLabelHMI
+        '
+        Me.ControllerPVLabelHMI.AutoSize = True
+        Me.ControllerPVLabelHMI.BackColor = System.Drawing.Color.White
+        Me.ControllerPVLabelHMI.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ControllerPVLabelHMI.Location = New System.Drawing.Point(1300, 350)
+        Me.ControllerPVLabelHMI.Name = "ControllerPVLabelHMI"
+        Me.ControllerPVLabelHMI.Size = New System.Drawing.Size(110, 25)
+        Me.ControllerPVLabelHMI.TabIndex = 0
+        Me.ControllerPVLabelHMI.Text = "PV = 50.00"
+        '
+        'ControllerSPLabelHMI
+        '
+        Me.ControllerSPLabelHMI.AutoSize = True
+        Me.ControllerSPLabelHMI.BackColor = System.Drawing.Color.White
+        Me.ControllerSPLabelHMI.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ControllerSPLabelHMI.Location = New System.Drawing.Point(1300, 400)
+        Me.ControllerSPLabelHMI.Name = "ControllerSPLabelHMI"
+        Me.ControllerSPLabelHMI.Size = New System.Drawing.Size(110, 25)
+        Me.ControllerSPLabelHMI.TabIndex = 0
+        Me.ControllerSPLabelHMI.Text = "SP = 50.00"
+        '
+        'ControllerOPLabelHMI
+        '
+        Me.ControllerOPLabelHMI.AutoSize = True
+        Me.ControllerOPLabelHMI.BackColor = System.Drawing.Color.White
+        Me.ControllerOPLabelHMI.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ControllerOPLabelHMI.Location = New System.Drawing.Point(1300, 450)
+        Me.ControllerOPLabelHMI.Name = "ControllerOPLabelHMI"
+        Me.ControllerOPLabelHMI.Size = New System.Drawing.Size(112, 25)
+        Me.ControllerOPLabelHMI.TabIndex = 0
+        Me.ControllerOPLabelHMI.Text = "OP = 50.00"
+        '
+        'ControllerCOLabelHMI
+        '
+        Me.ControllerCOLabelHMI.AutoSize = True
+        Me.ControllerCOLabelHMI.BackColor = System.Drawing.Color.White
+        Me.ControllerCOLabelHMI.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ControllerCOLabelHMI.Location = New System.Drawing.Point(1300, 500)
+        Me.ControllerCOLabelHMI.Name = "ControllerCOLabelHMI"
+        Me.ControllerCOLabelHMI.Size = New System.Drawing.Size(114, 25)
+        Me.ControllerCOLabelHMI.TabIndex = 0
+        Me.ControllerCOLabelHMI.Text = "CO = 50.00"
+        '
         'PID_Simulator
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1478, 1045)
+        Me.Controls.Add(Me.ControllerCOLabelHMI)
+        Me.Controls.Add(Me.ControllerOPLabelHMI)
+        Me.Controls.Add(Me.ControllerSPLabelHMI)
+        Me.Controls.Add(Me.ControllerPVLabelHMI)
         Me.Controls.Add(Me.MessageViewClearPb)
         Me.Controls.Add(Me.MessageView)
         Me.Controls.Add(Me.TuningTabControl)
@@ -793,4 +908,13 @@ Partial Class PID_Simulator
     Friend WithEvents ControllerOpLowTb As TextBox
     Friend WithEvents ControllerDirectionLabel As Label
     Friend WithEvents ControllerPVTrackingLabel As Label
+    Friend WithEvents NoiseFactorLabel As Label
+    Friend WithEvents SimulationSpeedLabel As Label
+    Friend WithEvents NoiseFactorTb As TextBox
+    Friend WithEvents ProcessModelDisturbanceLabl As Label
+    Friend WithEvents ProcessModelDisturbanceTb As TextBox
+    Friend WithEvents ControllerPVLabelHMI As Label
+    Friend WithEvents ControllerSPLabelHMI As Label
+    Friend WithEvents ControllerOPLabelHMI As Label
+    Friend WithEvents ControllerCOLabelHMI As Label
 End Class

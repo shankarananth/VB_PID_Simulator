@@ -6,6 +6,9 @@
     Public ProcessModelGain As Double
     Public ProcessModelSettlingTime As Double
     Public ProcessModelOutputPrevious As Double
+    Public ProcessNoise As Double
+    Public ProcessNoiseFactor As Double
+    Public ProcessModelDisturbance As Double
 
     'Defining Controller Variables
     Public ControllerPV As Double
@@ -41,6 +44,8 @@
             ProcessModelOutput = Val(ProcessOutputTb.Text)
             ProcessModelGain = Val(ProcessGainTb.Text)
             ProcessModelSettlingTime = Val(ProcessSettingTimeTb.Text)
+            ProcessNoiseFactor = Val(NoiseFactorTb.Text)
+            ProcessModelDisturbance = Val(ProcessModelDisturbanceTb.Text)
             ProcessModelOutputPrevious = ProcessModelOutput
 
             'Initialize Controller Variables
@@ -145,6 +150,8 @@
             ProcessModelOutput = Val(ProcessOutputTb.Text)
             ProcessModelGain = Val(ProcessGainTb.Text)
             ProcessModelSettlingTime = Val(ProcessSettingTimeTb.Text)
+            ProcessNoiseFactor = Val(NoiseFactorTb.Text)
+            ProcessModelDisturbance = Val(ProcessModelDisturbanceTb.Text)
 
             'Controller Read Parameters from UI
             ControllerPV = Val(ControllerPvTb.Text)
@@ -167,6 +174,13 @@
             ProcessModelOutput = (Math.Exp(-SimulationtimerInterval / ProcessModelSettlingTime) * ProcessModelOutputPrevious) +
                 ((1 - Math.Exp(-SimulationtimerInterval / ProcessModelSettlingTime)) * ProcessModelInput * ProcessModelGain)
             ProcessModelOutputPrevious = ProcessModelOutput
+
+            'Noise Model
+            ProcessNoise = ProcessNoiseFactor * Rnd()
+            ProcessModelOutput = ProcessModelOutput + ProcessNoise
+
+            'Disturbance Model
+            ProcessModelOutput = ProcessModelOutput + ProcessModelDisturbance
 
             'ProcessModel LimitBounds
             If ProcessModelOutput <= 0 Then
@@ -224,6 +238,12 @@
             ControllerPvTb.Text = Math.Round(ControllerPV, 4)
             ControllerSpTb.Text = Math.Round(ControllerSP, 4)
             ControllerOpTb.Text = Math.Round(ControllerOP, 4)
+
+            'Update UI - Controller Labels in Trend
+            ControllerPVLabelHMI.Text = "PV = " & Math.Round(ControllerPV, 2)
+            ControllerSPLabelHMI.Text = "SP = " & Math.Round(ControllerSP, 2)
+            ControllerOPLabelHMI.Text = "OP = " & Math.Round(ControllerOP, 2)
+            ControllerCOLabelHMI.Text = "CO = " & Math.Round(ControllerCOUT, 2)
 
             'Update Trends
 
