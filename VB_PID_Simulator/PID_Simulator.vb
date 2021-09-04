@@ -287,7 +287,7 @@
     Private Sub MessageViewClearPb_Click(sender As Object, e As EventArgs) Handles MessageViewClearPb.Click
         MessageView.Clear()
     End Sub
-
+    'Display About Box
     Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
         AboutBox.Show()
     End Sub

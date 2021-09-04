@@ -11,7 +11,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyTitle("Visual Basic PID Simulator")>
 <Assembly: AssemblyDescription("Dynamic PID Simulator")>
 <Assembly: AssemblyCompany("Shankar Ananth Asokan")>
-<Assembly: AssemblyProduct("VB_PID_Simulator")>
+<Assembly: AssemblyProduct("Visual Basic PID Simulator")>
 <Assembly: AssemblyCopyright("Copyright ©  2021")>
 <Assembly: AssemblyTrademark("")>
 
