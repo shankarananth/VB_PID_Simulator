@@ -27,6 +27,7 @@
     Public ControllerOpHi As Double
     Public ControllerDirection As Integer
     Public ControllerPvTracking As Integer
+    Public ControllerPidAlgorithm As Integer
 
     'Defining other variables
     Public SimulationtimerInterval As Double
@@ -54,6 +55,8 @@
             ControllerSP = Val(ControllerSpTb.Text)
             ControllerOP = Val(ControllerOpTb.Text)
             ControllerCOUT = ControllerOP
+            PidAlgorithmChoice.SelectedIndex = 0
+            ControllerPidAlgorithm = PidAlgorithmChoice.SelectedIndex
 
             'Initialize Controller Tuning Parameter Variables
             ControllerGain = Val(ControllerGainTb.Text)
@@ -70,6 +73,13 @@
             PidAlg1Err = 0
             PidAlg1PrevErr = 0
             PidAlg1Prev2Err = 0
+
+            'Initialize PID Algorithm 2 Variables
+            PidAlg2Err = 0
+            PidAlg2PrevErr = 0
+            PidAlg2Prev2Err = 0
+            PidAlg2PrevPv = 50
+            PidAlg2Prev2Pv = 50
 
             'Initialize Trend
             TrendValueInitializeArray = 50
@@ -145,7 +155,6 @@
         Try
 
             'Process Model Read Parameters from UI
-
             ProcessModelInput = Val(ProcessInputTb.Text)
             ProcessModelOutput = Val(ProcessOutputTb.Text)
             ProcessModelGain = Val(ProcessGainTb.Text)
@@ -168,6 +177,7 @@
             ControllerOpHi = Val(ControllerOpHighTb.Text)
             ControllerDirection = ControllerDirectionTrkb.Value
             ControllerPvTracking = ControllerPvTrackingTrkb.Value
+            ControllerPidAlgorithm = PidAlgorithmChoice.SelectedIndex
 
             ' Dynamic Process Model Equation
             ' ModelOut = exp(-TimeInterval / tau) * ModelOutPrev + (1 - exp(-TimeInterval / tau)) * ModelInput * ModelGain
@@ -203,9 +213,20 @@
                 ControllerSpTb.BackColor = Color.Gold
                 ControllerOpTb.ReadOnly = True
                 ControllerOpTb.BackColor = Color.White
-                ControllerCOUT = PidAlgorithm1(ControllerPV, ControllerSP, ControllerCOUT, ControllerGain,
+                'Choose PID Algorithm
+                If ControllerPidAlgorithm = 0 Then
+                    ControllerCOUT = PidAlgorithm1(ControllerPV, ControllerSP, ControllerCOUT, ControllerGain,
                                              ControllerIntegral, ControllerDerivative, ControllerDirection,
                                              ControllerOpHi, ControllerOpLo)
+                ElseIf ControllerPidAlgorithm = 1 Then
+                    ControllerCOUT = PidAlgorithm2(ControllerPV, ControllerSP, ControllerCOUT, ControllerGain,
+                                             ControllerIntegral, ControllerDerivative, ControllerDirection,
+                                             ControllerOpHi, ControllerOpLo)
+                Else
+                    SimulationTimer.Stop()
+                    MsgBox("Algorithm Error" & " - Debug PID=" & ControllerPidAlgorithm)
+                    End
+                End If
             ElseIf ControllerModeCb.SelectedIndex = 1 Then 'Manual
                 ControllerCOUT = ControllerOP
                 ControllerOpTb.ReadOnly = False
@@ -290,5 +311,12 @@
     'Display About Box
     Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
         AboutBox.Show()
+    End Sub
+
+
+    Private Sub PidAlgorithmChoice_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles PidAlgorithmChoice.SelectionChangeCommitted
+        ControllerModeCb.SelectedIndex = 1
+        MessageView.AppendText("Control Algorithm Changed. Controller forced to manual" & vbNewLine)
+        MessageView.ScrollToCaret()
     End Sub
 End Class
