@@ -144,7 +144,7 @@ Partial Class PID_Simulator
         Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuToolStripMenuItem})
         Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip.Name = "MenuStrip"
-        Me.MenuStrip.Size = New System.Drawing.Size(1478, 36)
+        Me.MenuStrip.Size = New System.Drawing.Size(1478, 33)
         Me.MenuStrip.TabIndex = 1
         Me.MenuStrip.Text = "MenuStrip1"
         '
@@ -152,7 +152,7 @@ Partial Class PID_Simulator
         '
         Me.MenuToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem, Me.ExitToolStripMenuItem})
         Me.MenuToolStripMenuItem.Name = "MenuToolStripMenuItem"
-        Me.MenuToolStripMenuItem.Size = New System.Drawing.Size(73, 30)
+        Me.MenuToolStripMenuItem.Size = New System.Drawing.Size(73, 29)
         Me.MenuToolStripMenuItem.Text = "Menu"
         '
         'AboutToolStripMenuItem
@@ -223,6 +223,11 @@ Partial Class PID_Simulator
         '
         'SimulationTrend
         '
+        ChartArea1.AxisX.Interval = 60.0R
+        ChartArea1.AxisX.MajorGrid.Interval = 60.0R
+        ChartArea1.AxisX.MajorTickMark.Interval = 60.0R
+        ChartArea1.AxisX.Maximum = 300.0R
+        ChartArea1.AxisX.Minimum = 0R
         ChartArea1.Name = "ChartArea1"
         Me.SimulationTrend.ChartAreas.Add(ChartArea1)
         Legend1.Name = "Legend1"

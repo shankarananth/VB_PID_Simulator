@@ -251,6 +251,18 @@
                 ControllerOP = ControllerCOUT
             End If
 
+            'Validate Setpoint Against Limits
+
+            If ControllerSP < ControllerSpLo Then
+                ControllerSP = ControllerSpLo
+                MessageView.AppendText("Controller Setpoint - Clamped at Low Limit" & vbNewLine)
+                MessageView.ScrollToCaret()
+            ElseIf ControllerSP > ControllerSpHi Then
+                ControllerSP = ControllerSpHi
+                MessageView.AppendText("Controller Setpoint - Clamped at High Limit" & vbNewLine)
+                MessageView.ScrollToCaret()
+            End If
+
             'Update UI - Process Model
             ProcessOutputTb.Text = Math.Round(ProcessModelOutput, 4)
             ProcessInputTb.Text = Math.Round(ControllerOP, 4) 'Note: Process and Controller connection
