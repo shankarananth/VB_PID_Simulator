@@ -95,6 +95,12 @@ Partial Class PID_Simulator
         Me.ControllerSPLabelHMI = New System.Windows.Forms.Label()
         Me.ControllerOPLabelHMI = New System.Windows.Forms.Label()
         Me.ControllerCOLabelHMI = New System.Windows.Forms.Label()
+        Me.TrendLoLimitTb = New System.Windows.Forms.TextBox()
+        Me.TrendHiLimitTb = New System.Windows.Forms.TextBox()
+        Me.TrendLoLimitLabel = New System.Windows.Forms.Label()
+        Me.TrendHiLimitLabel = New System.Windows.Forms.Label()
+        Me.TrendSpanTb = New System.Windows.Forms.TextBox()
+        Me.TrendSpanLabel = New System.Windows.Forms.Label()
         Me.StatusStrip.SuspendLayout()
         Me.MenuStrip.SuspendLayout()
         Me.SimulationControlPanel.SuspendLayout()
@@ -799,7 +805,7 @@ Partial Class PID_Simulator
         Me.ControllerPVLabelHMI.AutoSize = True
         Me.ControllerPVLabelHMI.BackColor = System.Drawing.Color.White
         Me.ControllerPVLabelHMI.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ControllerPVLabelHMI.Location = New System.Drawing.Point(1300, 350)
+        Me.ControllerPVLabelHMI.Location = New System.Drawing.Point(1305, 336)
         Me.ControllerPVLabelHMI.Name = "ControllerPVLabelHMI"
         Me.ControllerPVLabelHMI.Size = New System.Drawing.Size(110, 25)
         Me.ControllerPVLabelHMI.TabIndex = 0
@@ -810,7 +816,7 @@ Partial Class PID_Simulator
         Me.ControllerSPLabelHMI.AutoSize = True
         Me.ControllerSPLabelHMI.BackColor = System.Drawing.Color.White
         Me.ControllerSPLabelHMI.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ControllerSPLabelHMI.Location = New System.Drawing.Point(1300, 400)
+        Me.ControllerSPLabelHMI.Location = New System.Drawing.Point(1305, 386)
         Me.ControllerSPLabelHMI.Name = "ControllerSPLabelHMI"
         Me.ControllerSPLabelHMI.Size = New System.Drawing.Size(110, 25)
         Me.ControllerSPLabelHMI.TabIndex = 0
@@ -821,7 +827,7 @@ Partial Class PID_Simulator
         Me.ControllerOPLabelHMI.AutoSize = True
         Me.ControllerOPLabelHMI.BackColor = System.Drawing.Color.White
         Me.ControllerOPLabelHMI.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ControllerOPLabelHMI.Location = New System.Drawing.Point(1300, 450)
+        Me.ControllerOPLabelHMI.Location = New System.Drawing.Point(1305, 436)
         Me.ControllerOPLabelHMI.Name = "ControllerOPLabelHMI"
         Me.ControllerOPLabelHMI.Size = New System.Drawing.Size(112, 25)
         Me.ControllerOPLabelHMI.TabIndex = 0
@@ -832,17 +838,90 @@ Partial Class PID_Simulator
         Me.ControllerCOLabelHMI.AutoSize = True
         Me.ControllerCOLabelHMI.BackColor = System.Drawing.Color.White
         Me.ControllerCOLabelHMI.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ControllerCOLabelHMI.Location = New System.Drawing.Point(1300, 500)
+        Me.ControllerCOLabelHMI.Location = New System.Drawing.Point(1305, 486)
         Me.ControllerCOLabelHMI.Name = "ControllerCOLabelHMI"
         Me.ControllerCOLabelHMI.Size = New System.Drawing.Size(114, 25)
         Me.ControllerCOLabelHMI.TabIndex = 0
         Me.ControllerCOLabelHMI.Text = "CO = 50.00"
+        '
+        'TrendLoLimitTb
+        '
+        Me.TrendLoLimitTb.AcceptsReturn = True
+        Me.TrendLoLimitTb.BackColor = System.Drawing.Color.White
+        Me.TrendLoLimitTb.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TrendLoLimitTb.ForeColor = System.Drawing.Color.Black
+        Me.TrendLoLimitTb.Location = New System.Drawing.Point(1370, 586)
+        Me.TrendLoLimitTb.Name = "TrendLoLimitTb"
+        Me.TrendLoLimitTb.Size = New System.Drawing.Size(45, 30)
+        Me.TrendLoLimitTb.TabIndex = 10
+        Me.TrendLoLimitTb.Text = "0"
+        '
+        'TrendHiLimitTb
+        '
+        Me.TrendHiLimitTb.BackColor = System.Drawing.Color.White
+        Me.TrendHiLimitTb.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TrendHiLimitTb.ForeColor = System.Drawing.Color.Black
+        Me.TrendHiLimitTb.Location = New System.Drawing.Point(1370, 536)
+        Me.TrendHiLimitTb.Name = "TrendHiLimitTb"
+        Me.TrendHiLimitTb.Size = New System.Drawing.Size(45, 30)
+        Me.TrendHiLimitTb.TabIndex = 11
+        Me.TrendHiLimitTb.Text = "100"
+        '
+        'TrendLoLimitLabel
+        '
+        Me.TrendLoLimitLabel.AutoSize = True
+        Me.TrendLoLimitLabel.BackColor = System.Drawing.Color.White
+        Me.TrendLoLimitLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TrendLoLimitLabel.Location = New System.Drawing.Point(1305, 591)
+        Me.TrendLoLimitLabel.Name = "TrendLoLimitLabel"
+        Me.TrendLoLimitLabel.Size = New System.Drawing.Size(48, 25)
+        Me.TrendLoLimitLabel.TabIndex = 19
+        Me.TrendLoLimitLabel.Text = "Low"
+        '
+        'TrendHiLimitLabel
+        '
+        Me.TrendHiLimitLabel.AutoSize = True
+        Me.TrendHiLimitLabel.BackColor = System.Drawing.Color.White
+        Me.TrendHiLimitLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TrendHiLimitLabel.Location = New System.Drawing.Point(1305, 541)
+        Me.TrendHiLimitLabel.Name = "TrendHiLimitLabel"
+        Me.TrendHiLimitLabel.Size = New System.Drawing.Size(52, 25)
+        Me.TrendHiLimitLabel.TabIndex = 20
+        Me.TrendHiLimitLabel.Text = "High"
+        '
+        'TrendSpanTb
+        '
+        Me.TrendSpanTb.BackColor = System.Drawing.Color.White
+        Me.TrendSpanTb.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TrendSpanTb.ForeColor = System.Drawing.Color.Black
+        Me.TrendSpanTb.Location = New System.Drawing.Point(1370, 636)
+        Me.TrendSpanTb.Name = "TrendSpanTb"
+        Me.TrendSpanTb.Size = New System.Drawing.Size(45, 30)
+        Me.TrendSpanTb.TabIndex = 21
+        Me.TrendSpanTb.Text = "300"
+        '
+        'TrendSpanLabel
+        '
+        Me.TrendSpanLabel.AutoSize = True
+        Me.TrendSpanLabel.BackColor = System.Drawing.Color.White
+        Me.TrendSpanLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TrendSpanLabel.Location = New System.Drawing.Point(1305, 641)
+        Me.TrendSpanLabel.Name = "TrendSpanLabel"
+        Me.TrendSpanLabel.Size = New System.Drawing.Size(59, 25)
+        Me.TrendSpanLabel.TabIndex = 22
+        Me.TrendSpanLabel.Text = "Span"
         '
         'PID_Simulator
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1478, 1045)
+        Me.Controls.Add(Me.TrendSpanLabel)
+        Me.Controls.Add(Me.TrendSpanTb)
+        Me.Controls.Add(Me.TrendHiLimitLabel)
+        Me.Controls.Add(Me.TrendLoLimitLabel)
+        Me.Controls.Add(Me.TrendHiLimitTb)
+        Me.Controls.Add(Me.TrendLoLimitTb)
         Me.Controls.Add(Me.ControllerCOLabelHMI)
         Me.Controls.Add(Me.ControllerOPLabelHMI)
         Me.Controls.Add(Me.ControllerSPLabelHMI)
@@ -856,8 +935,10 @@ Partial Class PID_Simulator
         Me.Controls.Add(Me.SimulationControlPanel)
         Me.Controls.Add(Me.StatusStrip)
         Me.Controls.Add(Me.MenuStrip)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip
+        Me.MaximizeBox = False
         Me.Name = "PID_Simulator"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = " PID Simulator"
@@ -949,4 +1030,10 @@ Partial Class PID_Simulator
     Friend WithEvents ControllerCOLabelHMI As Label
     Friend WithEvents PidAlgorithmTypeLabel As Label
     Friend WithEvents PidAlgorithmChoice As ComboBox
+    Friend WithEvents TrendLoLimitTb As TextBox
+    Friend WithEvents TrendHiLimitTb As TextBox
+    Friend WithEvents TrendLoLimitLabel As Label
+    Friend WithEvents TrendHiLimitLabel As Label
+    Friend WithEvents TrendSpanTb As TextBox
+    Friend WithEvents TrendSpanLabel As Label
 End Class

@@ -96,6 +96,9 @@
             Next i
 
             'Initialize Trend Span
+            SimulationTrend.ChartAreas(0).AxisX.Maximum = 300
+            SimulationTrend.ChartAreas(0).AxisY.Maximum = 100
+            SimulationTrend.ChartAreas(0).AxisY.Minimum = 0
             TrendSpan = 300
 
         Catch ex As Exception
@@ -300,8 +303,8 @@
         Catch ex As Exception
 
             'Quit application on Error
-            MessageBox.Show("Error in Integrator. Application will quit")
             SimulationTimer.Stop()
+            MessageBox.Show("Error in Integrator. Application will quit")
             End
 
         End Try
@@ -330,5 +333,32 @@
         ControllerModeCb.SelectedIndex = 1
         MessageView.AppendText("Control Algorithm Changed. Controller forced to manual" & vbNewLine)
         MessageView.ScrollToCaret()
+    End Sub
+
+    Private Sub TrendHiLimitTb_TextChanged(sender As Object, e As EventArgs) Handles TrendHiLimitTb.TextChanged
+        Try
+            SimulationTrend.ChartAreas(0).AxisY.Maximum = Val(TrendHiLimitTb.Text)
+        Catch ex As Exception
+            SimulationTimer.Stop()
+            MsgBox("Error in Settings. Simulation Stopped")
+        End Try
+    End Sub
+
+    Private Sub TrendSpanTb_TextChanged(sender As Object, e As EventArgs) Handles TrendSpanTb.TextChanged
+        Try
+            TrendSpan = Val(TrendSpanTb.Text)
+        Catch ex As Exception
+            SimulationTimer.Stop()
+            MsgBox("Error in Settings. Simulation Stopped")
+        End Try
+    End Sub
+
+    Private Sub TrendLoLimitTb_TextChanged(sender As Object, e As EventArgs) Handles TrendLoLimitTb.TextChanged
+        Try
+            SimulationTrend.ChartAreas(0).AxisY.Minimum = Val(TrendLoLimitTb.Text)
+        Catch ex As Exception
+            SimulationTimer.Stop()
+            MsgBox("Error in Settings. Simulation Stopped")
+        End Try
     End Sub
 End Class
